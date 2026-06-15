@@ -197,7 +197,7 @@
 		"createdAt": "2026-06-15T00:00:00Z",
 		"updatedAt": "2026-06-15T00:00:00Z",
 		"description": "Replica of the classic La Crosse Technology StarMeteo interface displaying current forecasts, LCD clock, local probe temp, and 3-day layout.",
-		"componentPath": "./screens/starmeteo",
+		"componentPath": "./screens/starmeteo/starmeteo",
 		"hasDataFetch": true,
 		"props": {
 			"currentMax": 19,
