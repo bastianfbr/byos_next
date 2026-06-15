@@ -150,10 +150,7 @@ export const fetchRecipeConfig = cache(
 // the initial build are silently excluded from the module map.
 // Every new recipe screen MUST be added here.
 // biome-ignore lint/suspicious/noExplicitAny: recipe components have varied prop shapes
-const COMPONENT_IMPORTERS: Record<
-	string,
-	() => Promise<{ default: React.ComponentType<any> }>
-> = {
+const COMPONENT_IMPORTERS: Record<string, () => Promise<{ default: any }>> = {
 	album: () => import("@/app/(app)/recipes/screens/album/album"),
 	"bitcoin-price": () =>
 		import("@/app/(app)/recipes/screens/bitcoin-price/bitcoin-price"),
