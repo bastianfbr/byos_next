@@ -101,8 +101,12 @@ export default function SimpleText({
 
 				{/* 3. SECTION INFÉRIEURE : Prévisions 3 Jours */}
 				<div className="grid grid-cols-3 gap-3 h-[160px]">
+					
+					{/* DEMAIN */}
 					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
-						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">DEMAIN</div>
+						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">
+							DEMAIN
+						</div>
 						<div className="flex justify-center my-1">
 							<WeatherIcon type="sun-cloud" className="h-14 w-14 text-black" />
 						</div>
@@ -118,5 +122,49 @@ export default function SimpleText({
 						</div>
 					</div>
 
+					{/* JOUR 3 */}
 					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
-						<div className="text-xs font-black tracking-wide text-center pt-0
+						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">
+							JOUR 3
+						</div>
+						<div className="flex justify-center my-1">
+							<WeatherIcon type="cloud" className="h-14 w-14 text-black" />
+						</div>
+						<div className="flex justify-between items-baseline px-2 text-sm font-semibold">
+							<div className="flex items-baseline">
+								<span className="text-[10px] mr-1 opacity-70">Ht</span>
+								<span className="text-xl font-bold font-inter">16</span><span>°</span>
+							</div>
+							<div className="flex items-baseline">
+								<span className="text-[10px] mr-1 opacity-70">Bs</span>
+								<span className="text-xl font-bold font-inter">9</span><span>°</span>
+							</div>
+						</div>
+					</div>
+
+					{/* JOUR 4 */}
+					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
+						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">
+							JOUR 4
+						</div>
+						<div className="flex justify-center my-1">
+							<WeatherIcon type="rain" className="h-14 w-14 text-black" />
+						</div>
+						<div className="flex justify-between items-baseline px-2 text-sm font-semibold">
+							<div className="flex items-baseline">
+								<span className="text-[10px] mr-1 opacity-70">Ht</span>
+								<span className="text-xl font-bold font-inter">15</span><span>°</span>
+							</div>
+							<div className="flex items-baseline">
+								<span className="text-[10px] mr-1 opacity-70">Bs</span>
+								<span className="text-xl font-bold font-inter">8</span><span>°</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</PreSatori>
+	);
+}
