@@ -196,23 +196,18 @@
 		"published": true,
 		"createdAt": "2026-06-15T00:00:00Z",
 		"updatedAt": "2026-06-15T00:00:00Z",
-		"description": "Replica of the classic La Crosse Technology StarMeteo interface displaying current forecasts, LCD clock, local probe temp, and 3-day layout.",
+		"description": "Replica of the classic La Crosse Technology StarMeteo interface.",
 		"componentPath": "./screens/starmeteo/starmeteo",
-		"hasDataFetch": true,
+		"hasDataFetch": false,
 		"props": {
 			"currentMax": 19,
 			"currentMin": 11,
 			"currentIcon": "sun-cloud",
 			"time": "12:34",
-			"probeTemp": 23.5,
-			"forecasts": [
-				{ "label": "DEMAIN", "icon": "sun-cloud", "tempMax": 18, "tempMin": 10 },
-				{ "label": "JOUR 3", "icon": "cloud", "tempMax": 16, "tempMin": 9 },
-				{ "label": "JOUR 4", "icon": "rain", "tempMax": 15, "tempMin": 8 }
-			]
+			"probeTemp": 23.5
 		},
 		"params": {},
-		"tags": ["tailwind", "weather", "api", "live-data", "nostalgia"],
+		"tags": ["bitmap", "text", "weather"],
 		"author": {
 			"name": "Bastian",
 			"github": ""
