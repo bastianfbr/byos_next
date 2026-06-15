@@ -171,6 +171,47 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"starmeteo": {
+		"title": "StarMeteo Weather Station",
+		"published": true,
+		"createdAt": "2026-06-15T00:00:00Z",
+		"updatedAt": "2026-06-15T00:00:00Z",
+		"description": "A weather station inspired by the La Crosse Technology StarMeteo e-ink displays, rendering segmented text and 1-bit icons.",
+		"componentPath": "./screens/starmeteo",
+		"hasDataFetch": true,
+		"props": {
+			"currentMax": "23",
+			"currentMin": "12",
+			"currentIcon": "sun-cloud",
+			"time": "12:34",
+			"probeTemp": "17.3",
+			"forecastTomorrowMax": "20",
+			"forecastTomorrowMin": "10",
+			"forecastTomorrowIcon": "sun-cloud",
+			"forecastDay3Max": "17",
+			"forecastDay3Min": "8",
+			"forecastDay3Icon": "cloud",
+			"forecastDay4Max": "19",
+			"forecastDay4Min": "10",
+			"forecastDay4Icon": "rain"
+		},
+		"params": {
+			"location": {
+				"type": "string",
+				"label": "Location",
+				"description": "City or place name to fetch weather for",
+				"default": "Paris"
+			}
+		},
+		"tags": ["tailwind", "weather", "retro", "live-data", "configurable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"not-found": {
 		"title": "Not Found Recipe",
 		"published": true,
@@ -190,32 +231,5 @@
 		},
 		"version": "1.0.0",
 		"category": "system-components"
-	},
-	"starmeteo": {
-		"title": "StarMeteo Station",
-		"published": true,
-		"createdAt": "2026-06-15T00:00:00Z",
-		"updatedAt": "2026-06-15T00:00:00Z",
-		"description": "Replica of the classic La Crosse Technology StarMeteo interface.",
-		"componentPath": "./screens/starmeteo/starmeteo",
-		"hasDataFetch": false,
-		"props": {
-			"currentMax": 19,
-			"currentMin": 11,
-			"currentIcon": "sun-cloud",
-			"time": "12:34",
-			"probeTemp": 23.5
-		},
-		"params": {},
-		"tags": ["bitmap", "text", "weather"],
-		"author": {
-			"name": "Bastian",
-			"github": ""
-		},
-		"renderSettings": {
-			"doubleSizeForSharperText": true
-		},
-		"version": "1.0.0",
-		"category": "display-components"
 	}
 }

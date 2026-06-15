@@ -1,163 +1,604 @@
-import React from 'react';
-import fontData from "@/components/bitmap-font/bitmap-font.json";
-import { BitmapText } from "@/components/bitmap-font/bitmap-text";
+import React from "react";
 import { PreSatori } from "@/utils/pre-satori";
 
-// Interface stricte pour matcher le format simple du projet
 interface StarMeteoProps {
+	currentMax?: string;
+	currentMin?: string;
+	currentIcon?: string;
+	time?: string;
+	probeTemp?: string;
+	forecastTomorrowMax?: string;
+	forecastTomorrowMin?: string;
+	forecastTomorrowIcon?: string;
+	forecastDay3Max?: string;
+	forecastDay3Min?: string;
+	forecastDay3Icon?: string;
+	forecastDay4Max?: string;
+	forecastDay4Min?: string;
+	forecastDay4Icon?: string;
 	width?: number;
 	height?: number;
-	currentMax?: number;
-	currentMin?: number;
-	currentIcon?: 'sun-cloud' | 'cloud' | 'rain';
-	time?: string;
-	probeTemp?: number;
 }
 
-export default function StarMeteo({
-	width = 800,
-	height = 480,
-	currentMax = 19,
-	currentMin = 11,
-	currentIcon = 'sun-cloud',
-	time = '12:34',
-	probeTemp = 23.5,
-}: StarMeteoProps) {
-	
-	// Composant SVG interne pour les icônes
-	const WeatherIcon = ({ type, className = "h-16 w-16" }: { type: string, className?: string }) => {
-		if (type === 'sun-cloud') {
-			return (
-				<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-					<path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M20 12h2M5.75 18.25l-1.43 1.43M19.78 4.22l-1.42 1.42" strokeLinecap="round"/>
-					<path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" fill="white" strokeLinecap="round" strokeLinejoin="round"/>
-				</svg>
-			);
-		}
-		if (type === 'rain') {
-			return (
-				<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-					<path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" strokeLinecap="round" strokeLinejoin="round"/>
-					<line x1="8" y1="19" x2="6" y2="22" strokeLinecap="round"/>
-					<line x1="12" y1="19" x2="10" y2="22" strokeLinecap="round"/>
-					<line x1="16" y1="19" x2="14" y2="22" strokeLinecap="round"/>
-				</svg>
+// ─── 7-segment SVG renderer ───────────────────────────────────────────────────
+const SEGS: Record<string, string> = {
+	a: "M 13.64 0 L 43.64 0 L 37.92 6 L 17.92 6 Z",
+	f: "M 8.04 5 L 13.44 10 L 10.8 32 L 4.44 35 Z",
+	b: "M 48.04 5 L 44.44 35 L 38.8 32 L 41.44 10 Z",
+	g: "M 10.32 36 L 14.68 33 L 34.68 33 L 38.32 36 L 33.96 39 L 13.96 39 Z",
+	e: "M 4.2 37 L 9.84 40 L 7.2 62 L 0.6 67 Z",
+	c: "M 44.2 37 L 40.6 67 L 35.2 62 L 37.84 40 Z",
+	d: "M 5 72 L 35 72 L 30.72 66 L 10.72 66 Z",
+};
+const CHARS: Record<string, string[]> = {
+	"0": ["a", "b", "c", "d", "e", "f"],
+	"1": ["b", "c"],
+	"2": ["a", "b", "g", "e", "d"],
+	"3": ["a", "b", "g", "c", "d"],
+	"4": ["f", "g", "b", "c"],
+	"5": ["a", "f", "g", "c", "d"],
+	"6": ["a", "f", "g", "e", "d", "c"],
+	"7": ["a", "b", "c"],
+	"8": ["a", "b", "c", "d", "e", "f", "g"],
+	"9": ["a", "b", "c", "d", "f", "g"],
+	"-": ["g"],
+	" ": [],
+};
+
+function SevenSegment({
+	value,
+	size = 72,
+	color = "#000",
+}: {
+	value: string;
+	size?: number;
+	color?: string;
+}) {
+	const DW = 54;
+	const DOT = 14;
+	const COL = 22;
+	const G = 4;
+	const chars = Array.from(value);
+	let totalW = 0;
+	for (const ch of chars)
+		totalW += (ch === "." ? DOT : ch === ":" ? COL : DW) + G;
+	totalW = Math.max(totalW - G, 1);
+	let x = 0;
+	return (
+		<svg
+			width={totalW * (size / 72)}
+			height={size}
+			viewBox={`0 0 ${totalW} 72`}
+			style={{ display: "inline-block" }}
+		>
+			<title>seg</title>
+			{chars.map((ch, i) => {
+				const cx = x;
+				if (ch === ".") {
+					x += DOT + G;
+					return (
+						<g key={i} transform={`translate(${cx},0)`}>
+							<path d="M 2 66 L 12 66 L 12 72 L 2 72 Z" fill={color} />
+						</g>
+					);
+				}
+				if (ch === ":") {
+					x += COL + G;
+					return (
+						<g key={i} transform={`translate(${cx},0)`}>
+							<path d="M 7 16 L 13 16 L 13 23 L 7 23 Z" fill={color} />
+							<path d="M 5 49 L 11 49 L 11 56 L 5 56 Z" fill={color} />
+						</g>
+					);
+				}
+				x += DW + G;
+				const on = CHARS[ch] ?? [];
+				return (
+					<g key={i} transform={`translate(${cx},0)`}>
+						{Object.entries(SEGS).map(([s, p]) => (
+							<path
+								key={s}
+								d={p}
+								fill={color}
+								opacity={on.includes(s) ? 1 : 0.04}
+							/>
+						))}
+					</g>
+				);
+			})}
+		</svg>
+	);
+}
+
+// ─── 1-bit SVG weather icons ──────────────────────────────────────────────────
+function WeatherIcon({
+	type,
+	size = 96,
+	filled = false,
+}: {
+	type: string;
+	size?: number;
+	filled?: boolean;
+}) {
+	const sw = 3.5;
+	const c = "#000";
+	const Cloud = ({ fill }: { fill?: string }) => (
+		<path
+			d="M14 50C8 50 4 46 4 40C4 35 8 31 13 30C15 23 21 18 29 18C37 18 43 23 45 30C51 31 56 35 56 41C56 46 51 50 45 50Z"
+			fill={fill ?? (filled ? c : "#FFF")}
+			stroke={c}
+			strokeWidth={sw}
+			strokeLinejoin="round"
+		/>
+	);
+	const SunCircle = ({ cx, cy, r }: { cx: number; cy: number; r: number }) => {
+		const rays = [];
+		for (let a = 0; a < 360; a += 45) {
+			const rad = (a * Math.PI) / 180;
+			rays.push(
+				<line
+					key={a}
+					x1={cx + Math.cos(rad) * (r + 2)}
+					y1={cy + Math.sin(rad) * (r + 2)}
+					x2={cx + Math.cos(rad) * (r + 8)}
+					y2={cy + Math.sin(rad) * (r + 8)}
+					stroke={c}
+					strokeWidth={sw}
+					strokeLinecap="round"
+				/>,
 			);
 		}
 		return (
-			<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-				<path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" fill="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-			</svg>
+			<g>
+				{rays}
+				<circle cx={cx} cy={cy} r={r} fill="#FFF" stroke={c} strokeWidth={sw} />
+			</g>
+		);
+	};
+	// Satori/Takumi: React Fragments (<>...</>) break inside SVG — always use <g> wrapper.
+	// Also, <line> has inconsistent support; use <path> M/L syntax instead.
+	const Drops = () => (
+		<g>
+			<path
+				d="M18 54 L16 60"
+				stroke={c}
+				strokeWidth={sw}
+				strokeLinecap="round"
+			/>
+			<path
+				d="M29 56 L27 62"
+				stroke={c}
+				strokeWidth={sw}
+				strokeLinecap="round"
+			/>
+			<path
+				d="M40 54 L38 60"
+				stroke={c}
+				strokeWidth={sw}
+				strokeLinecap="round"
+			/>
+		</g>
+	);
+
+	let content: React.ReactNode;
+	if (type === "sun") content = <SunCircle cx={30} cy={30} r={10} />;
+	else if (type === "sun-cloud")
+		content = (
+			<g>
+				<SunCircle cx={20} cy={18} r={8} />
+				<Cloud />
+			</g>
+		);
+	else if (type === "rain")
+		content = (
+			<g>
+				<Cloud />
+				<Drops />
+			</g>
+		);
+	else if (type === "snow")
+		content = (
+			<g>
+				<Cloud />
+				{[18, 30, 42].map((x) => (
+					<text key={x} x={x} y={62} fontSize={9} textAnchor="middle" fill={c}>
+						*
+					</text>
+				))}
+			</g>
+		);
+	else if (type === "thunder")
+		content = (
+			<g>
+				<Cloud />
+				<path d="M33 50 L26 57 L31 57 L28 63 L38 55 L33 55Z" fill={c} />
+			</g>
+		);
+	else content = <Cloud />;
+
+	return (
+		<svg
+			viewBox="0 0 64 64"
+			width={size}
+			height={size}
+			style={{ display: "block" }}
+		>
+			<title>wx</title>
+			{content}
+		</svg>
+	);
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+export default function StarMeteo({
+	currentMax = "23",
+	currentMin = "12",
+	currentIcon = "sun-cloud",
+	time = "12:34",
+	probeTemp = "17.3",
+	forecastTomorrowMax = "20",
+	forecastTomorrowMin = "10",
+	forecastTomorrowIcon = "sun-cloud",
+	forecastDay3Max = "17",
+	forecastDay3Min = "8",
+	forecastDay3Icon = "cloud",
+	forecastDay4Max = "19",
+	forecastDay4Min = "10",
+	forecastDay4Icon = "rain",
+	width = 800,
+	height = 480,
+}: StarMeteoProps) {
+	const hour = Number.parseInt(time.split(":")[0], 10) || 12;
+	const period =
+		hour >= 6 && hour < 12
+			? "MATIN"
+			: hour >= 12 && hour < 18
+				? "APRES-MIDI"
+				: hour >= 18 && hour < 22
+					? "SOIR"
+					: "NUIT";
+
+	// Layout constants
+	const PAD = 20;
+	const W = width - PAD * 2; // 760
+	const GAP = 8;
+	const TOP_H = 174;
+	const MID_H = 98;
+	const BOT_H = height - PAD * 2 - TOP_H - MID_H - GAP * 2; // ~152
+	const CARD_W = Math.floor((W - GAP * 2) / 3); // ~248
+
+	// ── Forecast card ─────────────────────────────────────────────────────────
+	// IMPORTANT: Card is a functional sub-component — PreSatori's transform() does NOT
+	// reach inside it. Elements here never receive a `tw` prop, so Takumi ignores any
+	// className. ALL layout properties (display, flexDirection, alignItems, etc.) MUST
+	// be in inline `style` so Takumi/Satori picks them up directly.
+	const Card = ({
+		day,
+		iconType,
+		maxT,
+		minT,
+	}: {
+		day: string;
+		iconType: string;
+		maxT: string;
+		minT: string;
+	}) => {
+		const innerW = CARD_W - 16; // width minus horizontal padding
+		const iconH = Math.max(BOT_H - 14 - 14 - 36 - 20, 52);
+		return (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					width: CARD_W,
+					height: BOT_H,
+					borderWidth: 4,
+					borderStyle: "solid",
+					borderColor: "#000000",
+					borderRadius: 24,
+					paddingTop: 8,
+					paddingBottom: 8,
+					paddingLeft: 8,
+					paddingRight: 8,
+					boxSizing: "border-box",
+					backgroundColor: "#ffffff",
+				}}
+			>
+				{/* Day label */}
+				<span
+					style={{
+						fontSize: 13,
+						fontWeight: "900",
+						textTransform: "uppercase",
+						letterSpacing: 1,
+						lineHeight: 1,
+						flexShrink: 0,
+					}}
+				>
+					{day}
+				</span>
+
+				{/* Icon — flex: 1 fills remaining vertical space */}
+				<div
+					style={{
+						display: "flex",
+						flex: 1,
+						alignItems: "center",
+						justifyContent: "center",
+						width: innerW,
+					}}
+				>
+					<WeatherIcon type={iconType} size={iconH} filled />
+				</div>
+
+				{/* Ht / Bs row — explicit flexDirection row + space-between */}
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+						width: innerW,
+						flexShrink: 0,
+					}}
+				>
+					{/* Ht group */}
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+						}}
+					>
+						<span
+							style={{
+								fontSize: 11,
+								fontWeight: "900",
+								opacity: 0.65,
+								marginRight: 2,
+							}}
+						>
+							Ht
+						</span>
+						<SevenSegment value={maxT} size={30} />
+						<span style={{ fontSize: 11, fontWeight: "bold" }}>°</span>
+					</div>
+					{/* Bs group */}
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "row",
+							alignItems: "center",
+						}}
+					>
+						<span
+							style={{
+								fontSize: 11,
+								fontWeight: "900",
+								opacity: 0.65,
+								marginRight: 2,
+							}}
+						>
+							Bs
+						</span>
+						<SevenSegment value={minT} size={30} />
+						<span style={{ fontSize: 11, fontWeight: "bold" }}>°</span>
+					</div>
+				</div>
+			</div>
 		);
 	};
 
 	return (
-		<PreSatori useDoubling={true} width={width} height={height}>
-			<div className="w-full h-full bg-white text-black p-4 flex flex-col justify-between font-sans select-none border border-black">
-				
-				{/* 1. SECTION SUPÉRIEURE : Temps Actuel */}
-				<div className="border-2 border-black rounded-2xl p-4 flex items-center justify-between relative h-[170px]">
-					<div className="absolute top-1 left-4 font-bold text-sm text-gray-700">APRES-MIDI</div>
-					
-					<div className="flex items-baseline pl-4">
-						<span className="text-sm font-bold align-super mr-2">Ht</span>
-						<span className="text-7xl font-inter font-extrabold">{currentMax}</span>
-						<span className="text-4xl font-light align-super">°</span>
+		<PreSatori width={width} height={height}>
+			{/*
+			  className="flex flex-col w-full h-full" is REQUIRED — Takumi uses the tw
+			  prop (from className) for canvas-level sizing. Inline style width/height
+			  alone don't work. Follows same pattern as weather.tsx.
+			*/}
+			<div
+				className="flex flex-col w-full h-full bg-white text-black"
+				style={{ padding: PAD, gap: GAP }}
+			>
+				{/* ── ROW 1: Today bordered box ──────────────────────────────────────── */}
+				<div
+					className="flex flex-row items-center justify-between relative"
+					style={{
+						height: TOP_H,
+						width: W,
+						// Borders in inline style — className border-* not rendered by Takumi
+						borderWidth: 4,
+						borderStyle: "solid",
+						borderColor: "#000000",
+						borderRadius: 28,
+						paddingLeft: 14,
+						paddingRight: 14,
+						flexShrink: 0,
+						boxSizing: "border-box",
+					}}
+				>
+					{/* Period badge on top border — inline style for position + colors */}
+					<div
+						className="absolute"
+						style={{
+							top: -16,
+							left: Math.floor(W / 2) - 92,
+							width: 184,
+							backgroundColor: "#000000",
+							color: "#ffffff",
+							fontSize: 13,
+							fontWeight: "900",
+							letterSpacing: 2,
+							textAlign: "center",
+							paddingTop: 3,
+							paddingBottom: 3,
+							borderRadius: 4,
+						}}
+					>
+						{period}
 					</div>
 
-					<div className="flex justify-center items-center">
-						<WeatherIcon type={currentIcon} className="h-28 w-28 text-black" />
+					{/* Ht max temperature */}
+					<div className="flex flex-row items-center" style={{ gap: 4 }}>
+						<span
+							style={{
+								fontSize: 16,
+								fontWeight: "900",
+								alignSelf: "flex-start",
+								marginTop: 10,
+							}}
+						>
+							Ht
+						</span>
+						<SevenSegment value={currentMax} size={110} />
+						<span
+							style={{
+								fontSize: 36,
+								fontWeight: "bold",
+								alignSelf: "flex-start",
+								marginTop: 2,
+							}}
+						>
+							°
+						</span>
 					</div>
 
-					<div className="flex items-baseline pr-4 relative">
-						<span className="text-sm font-bold align-super mr-2">Bs</span>
-						<span className="text-7xl font-inter font-extrabold">{currentMin}</span>
-						<span className="text-4xl font-light align-super">°</span>
-						
-						<div className="absolute bottom-2 -right-2 flex flex-col items-end gap-[2px]">
-							<span className="w-4 h-[2px] bg-black"></span>
-							<span className="w-3 h-[2px] bg-black"></span>
-							<span className="w-2 h-[2px] bg-black"></span>
-							<span className="w-1 h-[2px] bg-black"></span>
+					{/* Central weather icon */}
+					<div className="flex items-center justify-center" style={{ flex: 1 }}>
+						<WeatherIcon type={currentIcon} size={130} filled={false} />
+					</div>
+
+					{/* Bs min temperature */}
+					<div className="flex flex-row items-center" style={{ gap: 4 }}>
+						<span
+							style={{
+								fontSize: 16,
+								fontWeight: "900",
+								alignSelf: "flex-start",
+								marginTop: 10,
+							}}
+						>
+							Bs
+						</span>
+						<SevenSegment value={currentMin} size={110} />
+						<span
+							style={{
+								fontSize: 36,
+								fontWeight: "bold",
+								alignSelf: "flex-start",
+								marginTop: 2,
+							}}
+						>
+							°
+						</span>
+						{/* RF signal icon */}
+						<div style={{ position: "absolute", bottom: 8, right: 10 }}>
+							<svg
+								viewBox="0 0 24 24"
+								width={26}
+								height={26}
+								fill="none"
+								stroke="#000"
+								strokeWidth="2.5"
+								strokeLinecap="round"
+								style={{ display: "block" }}
+							>
+								<title>RF</title>
+								<circle cx="6" cy="18" r="1.5" fill="#000" stroke="none" />
+								<path d="M10 18a4 4 0 0 0-4-4" />
+								<path d="M14 18a8 8 0 0 0-8-8" />
+								<path d="M18 18a12 12 0 0 0-12-12" />
+							</svg>
 						</div>
 					</div>
 				</div>
 
-				{/* 2. SECTION CENTRALE : Horloge & Sonde */}
-				<div className="flex items-center justify-between px-6 h-[100px]">
-					<div className="text-6xl font-inter font-bold tracking-normal">
-						{time}
+				{/* ── ROW 2: Clock + Probe temperature ─────────────────────────────── */}
+				<div
+					className="flex flex-row items-center justify-between"
+					style={{
+						height: MID_H,
+						width: W,
+						paddingLeft: 8,
+						paddingRight: 8,
+						flexShrink: 0,
+					}}
+				>
+					<div className="flex items-center">
+						<SevenSegment value={time} size={96} />
 					</div>
-					
-					<div className="flex items-center gap-2">
-						<div className="flex items-baseline">
-							<span className="text-7xl font-inter font-bold">{probeTemp.toFixed(1)}</span>
-							<span className="text-4xl font-light align-super">°</span>
-						</div>
-						<div className="flex flex-col text-[10px] font-bold border-l border-black pl-1 leading-tight justify-center">
-							<span>INT</span>
-							<span className="bg-black text-white px-[2px] rounded-sm mt-[2px] text-[8px]">PROBE</span>
-						</div>
-					</div>
-				</div>
-
-				{/* 3. SECTION INFÉRIEURE : Prévisions 3 Jours */}
-				<div className="grid grid-cols-3 gap-3 h-[160px]">
-					{/* Bloc Demain */}
-					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
-						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">DEMAIN</div>
-						<div className="flex justify-center my-1">
-							<WeatherIcon type="sun-cloud" className="h-14 w-14 text-black" />
-						</div>
-						<div className="flex justify-between items-baseline px-2 text-sm font-semibold">
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Ht</span>
-								<span className="text-xl font-bold font-inter">18</span><span>°</span>
-							</div>
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Bs</span>
-								<span className="text-xl font-bold font-inter">10</span><span>°</span>
-							</div>
-						</div>
-					</div>
-
-					{/* Bloc Jour 3 */}
-					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
-						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">JOUR 3</div>
-						<div className="flex justify-center my-1">
-							<WeatherIcon type="cloud" className="h-14 w-14 text-black" />
-						</div>
-						<div className="flex justify-between items-baseline px-2 text-sm font-semibold">
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Ht</span>
-								<span className="text-xl font-bold font-inter">16</span><span>°</span>
-							</div>
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Bs</span>
-								<span className="text-xl font-bold font-inter">9</span><span>°</span>
-							</div>
-						</div>
-					</div>
-
-					{/* Bloc Jour 4 */}
-					<div className="border-2 border-black rounded-2xl p-2 flex flex-col justify-between relative bg-white">
-						<div className="text-xs font-black tracking-wide text-center pt-0.5 border-b border-black pb-0.5 mx-4">JOUR 4</div>
-						<div className="flex justify-center my-1">
-							<WeatherIcon type="rain" className="h-14 w-14 text-black" />
-						</div>
-						<div className="flex justify-between items-baseline px-2 text-sm font-semibold">
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Ht</span>
-								<span className="text-xl font-bold font-inter">15</span><span>°</span>
-							</div>
-							<div className="flex items-baseline">
-								<span className="text-[10px] mr-1 opacity-70">Bs</span>
-								<span className="text-xl font-bold font-inter">8</span><span>°</span>
+					<div className="flex flex-row items-center" style={{ gap: 4 }}>
+						<SevenSegment value={probeTemp} size={96} />
+						<span
+							style={{
+								fontSize: 34,
+								fontWeight: "bold",
+								alignSelf: "flex-start",
+								marginTop: 2,
+							}}
+						>
+							°
+						</span>
+						<div
+							className="flex flex-col items-center"
+							style={{ marginTop: 20 }}
+						>
+							<span
+								style={{ fontSize: 10, fontWeight: "900", letterSpacing: 0.5 }}
+							>
+								EXT
+							</span>
+							<div
+								style={{
+									backgroundColor: "#000000",
+									borderRadius: 2,
+									marginTop: 2,
+									paddingLeft: 3,
+									paddingRight: 3,
+									paddingTop: 2,
+									paddingBottom: 2,
+								}}
+							>
+								<span
+									style={{ color: "#ffffff", fontSize: 8, fontWeight: "900" }}
+								>
+									PROBE
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 
+				{/* ── ROW 3: 3-day forecast cards ───────────────────────────────────── */}
+				<div
+					className="flex flex-row"
+					style={{
+						width: W,
+						height: BOT_H,
+						justifyContent: "space-between",
+						flexShrink: 0,
+					}}
+				>
+					<Card
+						day="DEMAIN"
+						iconType={forecastTomorrowIcon}
+						maxT={forecastTomorrowMax}
+						minT={forecastTomorrowMin}
+					/>
+					<Card
+						day="JOUR 3"
+						iconType={forecastDay3Icon}
+						maxT={forecastDay3Max}
+						minT={forecastDay3Min}
+					/>
+					<Card
+						day="JOUR 4"
+						iconType={forecastDay4Icon}
+						maxT={forecastDay4Max}
+						minT={forecastDay4Min}
+					/>
+				</div>
 			</div>
 		</PreSatori>
 	);
