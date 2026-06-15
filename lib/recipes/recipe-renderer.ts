@@ -144,36 +144,50 @@ export const fetchRecipeConfig = cache(
 	},
 );
 
-// Static import map — required for Next.js 16 + Turbopack.
-// Turbopack cannot reliably bundle fully dynamic template-literal imports
-// (import(`.../${slug}/${slug}.tsx`)) in production. New recipes added after
-// the initial build are silently excluded from the module map.
-// Every new recipe screen MUST be added here.
+import AlbumComponent from "@/app/(app)/recipes/screens/album/album";
+import BitcoinPriceComponent from "@/app/(app)/recipes/screens/bitcoin-price/bitcoin-price";
+import BitmapPatternsComponent from "@/app/(app)/recipes/screens/bitmap-patterns/bitmap-patterns";
+import NotFoundScreenComponent from "@/app/(app)/recipes/screens/not-found/not-found";
+import ResponsiveExampleComponent from "@/app/(app)/recipes/screens/responsive-example/responsive-example";
+import SimpleTextComponent from "@/app/(app)/recipes/screens/simple-text/simple-text";
+import StarmeteoComponent from "@/app/(app)/recipes/screens/starmeteo/starmeteo";
+import WeatherComponent from "@/app/(app)/recipes/screens/weather/weather";
+import WikipediaComponent from "@/app/(app)/recipes/screens/wikipedia/wikipedia";
+
+import BitcoinPriceData from "@/app/(app)/recipes/screens/bitcoin-price/getData";
+import StarmeteoData from "@/app/(app)/recipes/screens/starmeteo/getData";
+import WeatherData from "@/app/(app)/recipes/screens/weather/getData";
+import WikipediaData from "@/app/(app)/recipes/screens/wikipedia/getData";
+
+// Static mapping to avoid dynamic import() chunk resolving bugs on Vercel Turbopack
 // biome-ignore lint/suspicious/noExplicitAny: recipe components have varied prop shapes
-const COMPONENT_IMPORTERS: Record<string, () => Promise<{ default: any }>> = {
-	album: () => import("@/app/(app)/recipes/screens/album/album"),
-	"bitcoin-price": () =>
-		import("@/app/(app)/recipes/screens/bitcoin-price/bitcoin-price"),
-	"bitmap-patterns": () =>
-		import("@/app/(app)/recipes/screens/bitmap-patterns/bitmap-patterns"),
-	"not-found": () => import("@/app/(app)/recipes/screens/not-found/not-found"),
-	"responsive-example": () =>
-		import("@/app/(app)/recipes/screens/responsive-example/responsive-example"),
-	"simple-text": () =>
-		import("@/app/(app)/recipes/screens/simple-text/simple-text"),
-	starmeteo: () => import("@/app/(app)/recipes/screens/starmeteo/starmeteo"),
-	weather: () => import("@/app/(app)/recipes/screens/weather/weather"),
-	wikipedia: () => import("@/app/(app)/recipes/screens/wikipedia/wikipedia"),
+const COMPONENT_IMPORTERS: Record<string, any> = {
+	album: AlbumComponent,
+	"bitcoin-price": BitcoinPriceComponent,
+	"bitmap-patterns": BitmapPatternsComponent,
+	"not-found": NotFoundScreenComponent,
+	"responsive-example": ResponsiveExampleComponent,
+	"simple-text": SimpleTextComponent,
+	starmeteo: StarmeteoComponent,
+	weather: WeatherComponent,
+	wikipedia: WikipediaComponent,
+};
+
+// biome-ignore lint/suspicious/noExplicitAny: getData modules have varied return shapes
+const GETDATA_IMPORTERS: Record<string, any> = {
+	"bitcoin-price": BitcoinPriceData,
+	starmeteo: StarmeteoData,
+	weather: WeatherData,
+	wikipedia: WikipediaData,
 };
 
 export const fetchRecipeComponent = cache(async (slug: string) => {
 	try {
-		const importer = COMPONENT_IMPORTERS[slug];
-		if (!importer) {
-			logger.error(`No static importer registered for recipe: ${slug}`);
+		const Component = COMPONENT_IMPORTERS[slug];
+		if (!Component) {
+			logger.error(`No static component registered for recipe: ${slug}`);
 			return null;
 		}
-		const { default: Component } = await importer();
 		return Component;
 	} catch (error) {
 		logger.error(`Error loading component for ${slug}:`, error);
@@ -209,28 +223,14 @@ export const fetchRecipeProps = cache(
 			return props;
 		}
 
-		// Static getData map — same reason as COMPONENT_IMPORTERS above.
-		// Add an entry here whenever a new recipe with hasDataFetch: true is created.
-		// biome-ignore lint/suspicious/noExplicitAny: getData modules have varied return shapes
-		const GETDATA_IMPORTERS: Record<string, () => Promise<any>> = {
-			"bitcoin-price": () =>
-				import("@/app/(app)/recipes/screens/bitcoin-price/getData"),
-			starmeteo: () => import("@/app/(app)/recipes/screens/starmeteo/getData"),
-			weather: () => import("@/app/(app)/recipes/screens/weather/getData"),
-			wikipedia: () => import("@/app/(app)/recipes/screens/wikipedia/getData"),
-		};
-
 		try {
-			const getDataImporter = GETDATA_IMPORTERS[slug];
-			if (!getDataImporter) {
+			const fetchDataFunction = GETDATA_IMPORTERS[slug];
+			if (!fetchDataFunction) {
 				logger.error(
 					`No static getData importer registered for recipe: ${slug}`,
 				);
 				return props;
 			}
-			const { default: fetchDataFunction } = (await getDataImporter()) as {
-				default: (params?: Record<string, unknown>) => Promise<ComponentProps>;
-			};
 
 			// Set a timeout for data fetching to prevent hanging
 			const fetchPromise = fetchDataFunction(params);
