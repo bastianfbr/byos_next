@@ -265,14 +265,17 @@ export default function StarMeteo({
 	const TOP_H = 174;
 	const MID_H = 98;
 	const BOT_H = height - PAD * 2 - TOP_H - MID_H - GAP * 2; // ~152
-	const CARD_W = Math.floor((W - GAP * 2) / 3); // ~248
 
-	// ── Forecast card ─────────────────────────────────────────────────────────
-	// IMPORTANT: Card is a functional sub-component — PreSatori's transform() does NOT
-	// reach inside it. Elements here never receive a `tw` prop, so Takumi ignores any
-	// className. ALL layout properties (display, flexDirection, alignItems, etc.) MUST
-	// be in inline `style` so Takumi/Satori picks them up directly.
-	const Card = ({
+	// ── Forecast section (inside unified panel) ───────────────────────────────
+	// IMPORTANT: ForecastSection is a functional sub-component — PreSatori's transform()
+	// does NOT reach inside it. ALL layout properties MUST be inline `style`.
+	const TEMP_SEG_SIZE = 48; // 7-segment size for forecast card temperatures
+	const TEMP_LABEL_SIZE = 12; // px for "Ht" / "Bs" labels
+	const iconH = Math.max(BOT_H - 22 - 12 - TEMP_SEG_SIZE - 16, 48); // available icon height
+	const sectionW = Math.floor((W - 8) / 3); // width of each 1/3 section (8px = 2×divider)
+	const innerPad = 10;
+
+	const ForecastSection = ({
 		day,
 		iconType,
 		maxT,
@@ -282,113 +285,122 @@ export default function StarMeteo({
 		iconType: string;
 		maxT: string;
 		minT: string;
-	}) => {
-		const innerW = CARD_W - 16; // width minus horizontal padding
-		const iconH = Math.max(BOT_H - 14 - 14 - 36 - 20, 52);
-		return (
+	}) => (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				width: sectionW,
+				height: BOT_H,
+				paddingTop: innerPad,
+				paddingBottom: innerPad,
+				paddingLeft: innerPad,
+				paddingRight: innerPad,
+				boxSizing: "border-box",
+			}}
+		>
+			{/* Day label — bigger & bolder, like image 2 */}
+			<span
+				style={{
+					fontSize: 16,
+					fontWeight: "900",
+					textTransform: "uppercase",
+					letterSpacing: 1.5,
+					lineHeight: 1,
+					flexShrink: 0,
+				}}
+			>
+				{day}
+			</span>
+
+			{/* Icon — flex: 1 fills remaining vertical space */}
 			<div
 				style={{
 					display: "flex",
-					flexDirection: "column",
+					flex: 1,
 					alignItems: "center",
-					width: CARD_W,
-					height: BOT_H,
-					borderWidth: 4,
-					borderStyle: "solid",
-					borderColor: "#000000",
-					borderRadius: 24,
-					paddingTop: 8,
-					paddingBottom: 8,
-					paddingLeft: 8,
-					paddingRight: 8,
-					boxSizing: "border-box",
-					backgroundColor: "#ffffff",
+					justifyContent: "center",
+					width: sectionW - innerPad * 2,
 				}}
 			>
-				{/* Day label */}
-				<span
-					style={{
-						fontSize: 13,
-						fontWeight: "900",
-						textTransform: "uppercase",
-						letterSpacing: 1,
-						lineHeight: 1,
-						flexShrink: 0,
-					}}
-				>
-					{day}
-				</span>
+				<WeatherIcon type={iconType} size={iconH} filled />
+			</div>
 
-				{/* Icon — flex: 1 fills remaining vertical space */}
-				<div
-					style={{
-						display: "flex",
-						flex: 1,
-						alignItems: "center",
-						justifyContent: "center",
-						width: innerW,
-					}}
-				>
-					<WeatherIcon type={iconType} size={iconH} filled />
-				</div>
-
-				{/* Ht / Bs row — explicit flexDirection row + space-between */}
+			{/* Ht [7seg] Bs [7seg] — single bottom row with larger digits */}
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "flex-end",
+					justifyContent: "center",
+					gap: 6,
+					flexShrink: 0,
+				}}
+			>
+				{/* Ht group */}
 				<div
 					style={{
 						display: "flex",
 						flexDirection: "row",
-						justifyContent: "space-between",
-						alignItems: "center",
-						width: innerW,
-						flexShrink: 0,
+						alignItems: "flex-end",
+						gap: 2,
 					}}
 				>
-					{/* Ht group */}
-					<div
+					<span
 						style={{
-							display: "flex",
-							flexDirection: "row",
-							alignItems: "center",
+							fontSize: TEMP_LABEL_SIZE,
+							fontWeight: "900",
+							opacity: 0.6,
+							marginBottom: 4,
 						}}
 					>
-						<span
-							style={{
-								fontSize: 11,
-								fontWeight: "900",
-								opacity: 0.65,
-								marginRight: 2,
-							}}
-						>
-							Ht
-						</span>
-						<SevenSegment value={maxT} size={30} />
-						<span style={{ fontSize: 11, fontWeight: "bold" }}>°</span>
-					</div>
-					{/* Bs group */}
-					<div
+						Ht
+					</span>
+					<SevenSegment value={maxT} size={TEMP_SEG_SIZE} />
+					<span
 						style={{
-							display: "flex",
-							flexDirection: "row",
-							alignItems: "center",
+							fontSize: 16,
+							fontWeight: "bold",
+							marginBottom: 4,
 						}}
 					>
-						<span
-							style={{
-								fontSize: 11,
-								fontWeight: "900",
-								opacity: 0.65,
-								marginRight: 2,
-							}}
-						>
-							Bs
-						</span>
-						<SevenSegment value={minT} size={30} />
-						<span style={{ fontSize: 11, fontWeight: "bold" }}>°</span>
-					</div>
+						°
+					</span>
+				</div>
+				{/* Bs group */}
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						alignItems: "flex-end",
+						gap: 2,
+					}}
+				>
+					<span
+						style={{
+							fontSize: TEMP_LABEL_SIZE,
+							fontWeight: "900",
+							opacity: 0.6,
+							marginBottom: 4,
+						}}
+					>
+						Bs
+					</span>
+					<SevenSegment value={minT} size={TEMP_SEG_SIZE} />
+					<span
+						style={{
+							fontSize: 16,
+							fontWeight: "bold",
+							marginBottom: 4,
+						}}
+					>
+						°
+					</span>
 				</div>
 			</div>
-		);
-	};
+		</div>
+	);
 
 	return (
 		<PreSatori width={width} height={height}>
@@ -570,29 +582,40 @@ export default function StarMeteo({
 					</div>
 				</div>
 
-				{/* ── ROW 3: 3-day forecast cards ───────────────────────────────────── */}
+				{/* ── ROW 3: Unified forecast panel with vertical dividers ──────────── */}
 				<div
-					className="flex flex-row"
 					style={{
+						display: "flex",
+						flexDirection: "row",
 						width: W,
 						height: BOT_H,
-						justifyContent: "space-between",
+						borderWidth: 4,
+						borderStyle: "solid",
+						borderColor: "#000000",
+						borderRadius: 24,
+						overflow: "hidden",
 						flexShrink: 0,
+						boxSizing: "border-box",
+						backgroundColor: "#ffffff",
 					}}
 				>
-					<Card
+					<ForecastSection
 						day="DEMAIN"
 						iconType={forecastTomorrowIcon}
 						maxT={forecastTomorrowMax}
 						minT={forecastTomorrowMin}
 					/>
-					<Card
+					{/* Vertical divider */}
+					<div style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }} />
+					<ForecastSection
 						day="JOUR 3"
 						iconType={forecastDay3Icon}
 						maxT={forecastDay3Max}
 						minT={forecastDay3Min}
 					/>
-					<Card
+					{/* Vertical divider */}
+					<div style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }} />
+					<ForecastSection
 						day="JOUR 4"
 						iconType={forecastDay4Icon}
 						maxT={forecastDay4Max}
