@@ -198,21 +198,26 @@ export async function GET(request: Request) {
 			image_rotate: orientation === "landscape" ? 1 : 0,
 		};
 
-		if (
-			latestFirmware &&
-			isUpdateAvailable(device.firmware_version, latestFirmware.version)
-		) {
-			firmwareExtra.update_firmware = true;
-			firmwareExtra.firmware_url = latestFirmware.downloadUrl;
-			logInfo("Firmware update available", {
-				source: "api/display",
-				metadata: {
-					deviceId: device.friendly_id,
-					currentVersion: device.firmware_version,
-					latestVersion: latestFirmware.version,
-				},
-			});
-		}
+		// NOTE: OTA firmware updates disabled — the E1001 (reTerminal) enters a
+		// reboot loop when update_firmware=true is returned (download fails with
+		// result -3 and the device reboots before displaying any image).
+		// Re-enable once the root cause of the OTA failure is identified.
+		//
+		// if (
+		// 	latestFirmware &&
+		// 	isUpdateAvailable(device.firmware_version, latestFirmware.version)
+		// ) {
+		// 	firmwareExtra.update_firmware = true;
+		// 	firmwareExtra.firmware_url = latestFirmware.downloadUrl;
+		// 	logInfo("Firmware update available", {
+		// 		source: "api/display",
+		// 		metadata: {
+		// 			deviceId: device.friendly_id,
+		// 			currentVersion: device.firmware_version,
+		// 			latestVersion: latestFirmware.version,
+		// 		},
+		// 	});
+		// }
 
 		return buildDisplayResponse(
 			imageUrl,
