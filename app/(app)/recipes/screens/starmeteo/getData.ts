@@ -115,7 +115,7 @@ async function getStarMeteoData(
 		}
 
 		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${finalLat}&longitude=${finalLng}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`,
+			`https://api.open-meteo.com/v1/forecast?latitude=${finalLat}&longitude=${finalLng}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&models=meteofrance_arome_france_hd`,
 			{
 				headers: { Accept: "application/json" },
 				next: { revalidate: 0 },
