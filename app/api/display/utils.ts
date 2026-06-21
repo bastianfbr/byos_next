@@ -551,7 +551,7 @@ export const buildErrorResponse = (
 	return NextResponse.json(
 		{
 			status: 500,
-			reset_firmware: true,
+			reset_firmware: false,
 			message,
 			image_url: notFoundImageUrl,
 			filename: `not-found_${uniqueId}.bmp`,
