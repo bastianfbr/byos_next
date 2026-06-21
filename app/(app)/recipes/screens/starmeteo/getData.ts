@@ -154,8 +154,15 @@ async function getStarMeteoData(
 		});
 
 		// AROME HD only covers ~2 days ahead — use default model data for days 3 & 4
-		const extendedDaily = defaultData.daily;
+		const extendedDaily = defaultData.daily ?? data.daily;
 
+		if (
+			extendedDaily.weather_code.length < 4 ||
+			extendedDaily.temperature_2m_max.length < 4 ||
+			extendedDaily.temperature_2m_min.length < 4
+		) {
+			throw new Error("Insufficient daily weather data in API response");
+		}
 		return {
 			currentMax: formatTemp(data.daily.temperature_2m_max[0]),
 			currentMin: formatTemp(data.daily.temperature_2m_min[0]),
