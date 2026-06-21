@@ -114,19 +114,30 @@ async function getStarMeteoData(
 			finalLng = 2.3522;
 		}
 
-		const response = await fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${finalLat}&longitude=${finalLng}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`,
-			{
-				headers: { Accept: "application/json" },
-				next: { revalidate: 0 },
-			},
-		);
+		const baseUrl = `https://api.open-meteo.com/v1/forecast?latitude=${finalLat}&longitude=${finalLng}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+		const fetchOptions = {
+			headers: { Accept: "application/json" },
+			next: { revalidate: 0 },
+		};
 
-		if (!response.ok) {
-			throw new Error(`Open-Meteo responded with status: ${response.status}`);
+		// Fetch AROME HD (Météo-France, 1.5km resolution) and default model in parallel.
+		// AROME only covers ~2 days ahead, so we use the default model as fallback for days 3 & 4.
+		const [aromeResponse, defaultResponse] = await Promise.all([
+			fetch(`${baseUrl}&models=meteofrance_arome_france_hd`, fetchOptions),
+			fetch(baseUrl, fetchOptions),
+		]);
+
+		if (!defaultResponse.ok) {
+			throw new Error(`Open-Meteo responded with status: ${defaultResponse.status}`);
 		}
 
-		const data: OpenMeteoResponse = await response.json();
+		const defaultData: OpenMeteoResponse = await defaultResponse.json();
+
+		// Use AROME data if available, otherwise fall back to default model data
+		const aromeData: OpenMeteoResponse | null =
+			aromeResponse.ok ? await aromeResponse.json() : null;
+
+		const data = aromeData ?? defaultData;
 
 		if (!data.current || !data.daily) {
 			throw new Error("Missing weather data in API response");
@@ -142,6 +153,16 @@ async function getStarMeteoData(
 			minute: "2-digit",
 		});
 
+		// AROME HD only covers ~2 days ahead — use default model data for days 3 & 4
+		const extendedDaily = defaultData.daily ?? data.daily;
+
+		if (
+			extendedDaily.weather_code.length < 4 ||
+			extendedDaily.temperature_2m_max.length < 4 ||
+			extendedDaily.temperature_2m_min.length < 4
+		) {
+			throw new Error("Insufficient daily weather data in API response");
+		}
 		return {
 			currentMax: formatTemp(data.daily.temperature_2m_max[0]),
 			currentMin: formatTemp(data.daily.temperature_2m_min[0]),
@@ -153,12 +174,12 @@ async function getStarMeteoData(
 			forecastTomorrowIcon: mapWeatherCodeToIconType(
 				data.daily.weather_code[1],
 			),
-			forecastDay3Max: formatTemp(data.daily.temperature_2m_max[2]),
-			forecastDay3Min: formatTemp(data.daily.temperature_2m_min[2]),
-			forecastDay3Icon: mapWeatherCodeToIconType(data.daily.weather_code[2]),
-			forecastDay4Max: formatTemp(data.daily.temperature_2m_max[3]),
-			forecastDay4Min: formatTemp(data.daily.temperature_2m_min[3]),
-			forecastDay4Icon: mapWeatherCodeToIconType(data.daily.weather_code[3]),
+			forecastDay3Max: formatTemp(extendedDaily.temperature_2m_max[2]),
+			forecastDay3Min: formatTemp(extendedDaily.temperature_2m_min[2]),
+			forecastDay3Icon: mapWeatherCodeToIconType(extendedDaily.weather_code[2]),
+			forecastDay4Max: formatTemp(extendedDaily.temperature_2m_max[3]),
+			forecastDay4Min: formatTemp(extendedDaily.temperature_2m_min[3]),
+			forecastDay4Icon: mapWeatherCodeToIconType(extendedDaily.weather_code[3]),
 		};
 	} catch (error) {
 		console.error("Error fetching weather data for StarMeteo:", error);
