@@ -1,5 +1,4 @@
 import type { NextRequest } from "next/server";
-import { cache } from "react";
 import NotFoundScreen from "@/app/(app)/recipes/screens/not-found/not-found";
 import {
 	DEFAULT_IMAGE_HEIGHT,
@@ -77,6 +76,7 @@ export async function GET(
 			headers: {
 				"Content-Type": "image/bmp",
 				"Content-Length": recipeBuffer.length.toString(),
+				"Cache-Control": "no-store",
 			},
 		});
 	} catch (error) {
@@ -87,29 +87,27 @@ export async function GET(
 	}
 }
 
-const renderRecipeBitmap = cache(
-	async (
-		recipeId: string,
-		width: number,
-		height: number,
-		grayscaleLevels: number = 2,
-		userId: string | null = null,
-		cookies?: string,
-	) => {
-		const renders = await renderRecipeToImage({
-			slug: recipeId,
-			imageWidth: width,
-			imageHeight: height,
-			formats: ["bitmap"],
-			grayscale: grayscaleLevels,
-			userId,
-			cookies,
-		});
-		return renders.bitmap ?? Buffer.from([]);
-	},
-);
+const renderRecipeBitmap = async (
+	recipeId: string,
+	width: number,
+	height: number,
+	grayscaleLevels: number = 2,
+	userId: string | null = null,
+	cookies?: string,
+) => {
+	const renders = await renderRecipeToImage({
+		slug: recipeId,
+		imageWidth: width,
+		imageHeight: height,
+		formats: ["bitmap"],
+		grayscale: grayscaleLevels,
+		userId,
+		cookies,
+	});
+	return renders.bitmap ?? Buffer.from([]);
+};
 
-const renderFallbackBitmap = cache(async (slug: string = "not-found") => {
+const renderFallbackBitmap = async (slug: string = "not-found") => {
 	try {
 		const renders = await renderRecipeOutputs({
 			slug,
@@ -141,4 +139,4 @@ const renderFallbackBitmap = cache(async (slug: string = "not-found") => {
 			},
 		});
 	}
-});
+};
