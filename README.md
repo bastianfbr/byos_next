@@ -37,8 +37,6 @@
   - [🎞️ Playlists](#️-playlists)
   - [🧪 Recettes (Recipes)](#-recettes-recipes)
   - [📖 Documentation](#-documentation)
-  - [🗺️ Roadmap](#️-roadmap)
-  - [🤝 Support & Feedback](#-support--feedback)
   - [📄 Licence](#-licence)
 
 ---
@@ -72,7 +70,7 @@ Ce repo est une implémentation **Next.js 16 / React 19** du protocole BYOS. Il 
 
 ## 🌿 reTerminal E1001 — Le setup e-ink parfait
 
-Le [**Seeed Studio reTerminal E1001**](https://www.seeedstudio.com/reTerminal-E1001-p-5439.html) est un terminal Linux embarqué basé sur le Raspberry Pi Compute Module 4, avec un écran tactile 5 pouces intégré.
+Le [**Seeed Studio reTerminal E1001**](https://www.seeedstudio.com/reTerminal-E1001-p-6534.html) est un écran ePaper monochrome **7.5 pouces** open-source, propulsé par un **ESP32-S3**, avec jusqu'à **3 mois d'autonomie** sur batterie.
 
 Dans ce projet, il est utilisé comme **device TRMNL autonome** :
 
@@ -80,11 +78,11 @@ Dans ce projet, il est utilisé comme **device TRMNL autonome** :
 ┌────────────────────────────────────────┐
 │        reTerminal E1001                │
 │  ┌─────────────────────────────────┐   │
-│  │   Écran e-ink TRMNL (800×480)   │   │
-│  │   Rafraîchissement toutes       │   │
-│  │   les X minutes selon playlist  │   │
+│  │  Écran ePaper 7.5" monochrome   │   │
+│  │  Rafraîchissement toutes        │   │
+│  │  les X minutes selon playlist   │   │
 │  └─────────────────────────────────┘   │
-│  CM4 + WiFi + Linux                    │
+│  ESP32-S3 + WiFi + batterie 3 mois     │
 └─────────────────┬──────────────────────┘
                   │ HTTP polling
                   ▼
@@ -96,11 +94,12 @@ Dans ce projet, il est utilisé comme **device TRMNL autonome** :
 └────────────────────────────────────────┘
 ```
 
-**Pourquoi le reTerminal ?**
-- 🔋 Faible consommation pour un affichage quasi-statique
-- 📶 Connectivité WiFi native (CM4)
-- 🐧 Linux complet → facile à configurer avec le firmware TRMNL
-- 🎨 Parfait pour des affichages ambiants (météo, agenda, tableaux de bord)
+**Pourquoi le reTerminal E1001 ?**
+- 🔋 Jusqu'à **3 mois d'autonomie** sur batterie — parfait pour un affichage ambiant
+- 📶 WiFi natif via ESP32-S3
+- 🖥️ Écran **7.5" monochrome** haute qualité, sans rétroéclairage
+- 🔧 Compatible nativement TRMNL, Home Assistant, Arduino, ESP-IDF
+- 🎨 Idéal pour météo, agenda, tableaux de bord, affichage bureau
 
 ---
 
@@ -336,23 +335,6 @@ Voir [`docs/recipes.md`](docs/recipes.md) pour la documentation complète.
 | [`app/recipes/README.md`](app/(app)/recipes/README.md) | Guide des recettes |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Guide de contribution |
 | [`BYOS.md`](BYOS.md) | README original du projet upstream |
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Meilleur système de gestion des recettes
-- [ ] Compatibilité complète avec les recettes TRMNL officielles
-- [ ] Plus de recettes communautaires
-
----
-
-## 🤝 Support & Feedback
-
-- 🐛 **Issues** : [github.com/usetrmnl/byos_next/issues](https://github.com/usetrmnl/byos_next/issues)
-- 💬 **Discussions** : [github.com/usetrmnl/byos_next/discussions](https://github.com/usetrmnl/byos_next/discussions)
-- 📧 **Email** : manglekuo@gmail.com
-- 🎮 **Discord TRMNL** : réponds dans le thread du mainteneur
 
 ---
 
