@@ -398,30 +398,34 @@ export const findOrCreateDevice = async (
 				new Date().toISOString().replace(/[-:Z]/g, ""),
 			);
 			try {
-				const newDevice = await db
-					.insertInto("devices")
-					.values({
-						mac_address: macAddress,
-						name: `TRMNL Device ${friendly_id}`,
-						friendly_id: friendly_id,
-						api_key: apiKey,
-						refresh_schedule: JSON.stringify({
-							default_refresh_rate: headers.refreshRate
-								? Number.parseInt(headers.refreshRate, 10)
-								: 60,
-							time_ranges: [],
-						}),
-						last_update_time: new Date().toISOString(),
-						next_expected_update: new Date(
-							Date.now() + 3600 * 1000,
-						).toISOString(),
-						timezone: "UTC",
-						screen: DEFAULT_SCREEN,
-						model: headers.model,
-						user_id: currentUserId,
-					})
-					.returningAll()
-					.executeTakeFirst();
+				const newDevice = await withExplicitUserScope(
+					currentUserId,
+					(conn) =>
+						conn
+							.insertInto("devices")
+							.values({
+								mac_address: macAddress,
+								name: `TRMNL Device ${friendly_id}`,
+								friendly_id: friendly_id,
+								api_key: apiKey,
+								refresh_schedule: JSON.stringify({
+									default_refresh_rate: headers.refreshRate
+										? Number.parseInt(headers.refreshRate, 10)
+										: 60,
+									time_ranges: [],
+								}),
+								last_update_time: new Date().toISOString(),
+								next_expected_update: new Date(
+									Date.now() + 3600 * 1000,
+								).toISOString(),
+								timezone: "UTC",
+								screen: DEFAULT_SCREEN,
+								model: headers.model,
+								user_id: currentUserId,
+							})
+							.returningAll()
+							.executeTakeFirst(),
+				);
 
 				if (newDevice) {
 					logInfo("Created new device with provided MAC address", {
@@ -475,28 +479,32 @@ export const findOrCreateDevice = async (
 				);
 
 		try {
-			const newDevice = await db
-				.insertInto("devices")
-				.values({
-					mac_address: macAddress || mockMacAddress,
-					name: `Unknown device with API ${apiKey.substring(0, 4)}...`,
-					friendly_id: friendly_id,
-					api_key: new_api_key,
-					refresh_schedule: JSON.stringify({
-						default_refresh_rate: 60,
-						time_ranges: [],
-					}),
-					last_update_time: new Date().toISOString(),
-					next_expected_update: new Date(
-						Date.now() + 3600 * 1000,
-					).toISOString(),
-					timezone: "UTC",
-					screen: DEFAULT_SCREEN,
-					model: headers.model,
-					user_id: currentUserId,
-				})
-				.returningAll()
-				.executeTakeFirst();
+			const newDevice = await withExplicitUserScope(
+				currentUserId,
+				(conn) =>
+					conn
+						.insertInto("devices")
+						.values({
+							mac_address: macAddress || mockMacAddress,
+							name: `Unknown device with API ${apiKey.substring(0, 4)}...`,
+							friendly_id: friendly_id,
+							api_key: new_api_key,
+							refresh_schedule: JSON.stringify({
+								default_refresh_rate: 60,
+								time_ranges: [],
+							}),
+							last_update_time: new Date().toISOString(),
+							next_expected_update: new Date(
+								Date.now() + 3600 * 1000,
+							).toISOString(),
+							timezone: "UTC",
+							screen: DEFAULT_SCREEN,
+							model: headers.model,
+							user_id: currentUserId,
+						})
+						.returningAll()
+						.executeTakeFirst(),
+			);
 
 			if (newDevice) {
 				logger.info(`Created new mock device: ${friendly_id}`);
