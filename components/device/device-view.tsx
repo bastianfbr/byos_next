@@ -39,7 +39,7 @@ const getSignalQuality = (rssi: number): string => {
 const calculateRefreshPerDay = (
 	deviceData: Device & { status?: string; type?: string },
 ): number => {
-	if (!deviceData?.refresh_schedule) return (24 * 60 * 60) / 300; // fallback: TRMNL default 300s
+	if (!deviceData?.refresh_schedule) return 0;
 	const defaultRefreshRate =
 		deviceData.refresh_schedule.default_refresh_rate || 300;
 	let refreshesPerDay = (24 * 60 * 60) / defaultRefreshRate;
@@ -53,16 +53,14 @@ const calculateRefreshPerDay = (
 			const startTimeInMinutes = startHour * 60 + startMinute;
 			const endTimeInMinutes = endHour * 60 + endMinute;
 			const durationInHours = (endTimeInMinutes - startTimeInMinutes) / 60;
-			const rangeRefreshRate = range.refresh_rate || defaultRefreshRate;
-			const rangeRefreshes = (durationInHours * 60 * 60) / rangeRefreshRate;
+			const rangeRefreshes = (durationInHours * 60 * 60) / range.refresh_rate;
 			refreshesPerDay =
 				refreshesPerDay -
 				(durationInHours * 60 * 60) / defaultRefreshRate +
 				rangeRefreshes;
 		}
 	}
-	const result = Math.max(0, refreshesPerDay);
-	return Number.isFinite(result) ? result : 0;
+	return Math.max(0, refreshesPerDay);
 };
 
 const getGrayscaleLevels = (grayscale: number | null | undefined): number => {
@@ -361,11 +359,7 @@ export default function DeviceView({
 									<span className="text-xs text-muted-foreground">
 										{batteryEstimate.isCharging
 											? "Estimating while charging"
-											: Number.isFinite(batteryEstimate.remainingDays)
-												? refreshPerDay > 0
-													? `~${batteryEstimate.remainingDays} days at ${Math.round(refreshPerDay)} refreshes/day`
-													: `~${batteryEstimate.remainingDays} days`
-												: "—"}
+											: `~${batteryEstimate.remainingDays} days at ${refreshPerDay} refreshes/day`}
 									</span>
 								</div>
 							</div>
