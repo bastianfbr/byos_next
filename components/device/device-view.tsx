@@ -53,14 +53,16 @@ const calculateRefreshPerDay = (
 			const startTimeInMinutes = startHour * 60 + startMinute;
 			const endTimeInMinutes = endHour * 60 + endMinute;
 			const durationInHours = (endTimeInMinutes - startTimeInMinutes) / 60;
-			const rangeRefreshes = (durationInHours * 60 * 60) / range.refresh_rate;
+			const rangeRefreshRate = range.refresh_rate || defaultRefreshRate;
+			const rangeRefreshes = (durationInHours * 60 * 60) / rangeRefreshRate;
 			refreshesPerDay =
 				refreshesPerDay -
 				(durationInHours * 60 * 60) / defaultRefreshRate +
 				rangeRefreshes;
 		}
 	}
-	return Math.max(0, refreshesPerDay);
+	const result = Math.max(0, refreshesPerDay);
+	return Number.isFinite(result) ? result : 0;
 };
 
 const getGrayscaleLevels = (grayscale: number | null | undefined): number => {
@@ -359,7 +361,9 @@ export default function DeviceView({
 									<span className="text-xs text-muted-foreground">
 										{batteryEstimate.isCharging
 											? "Estimating while charging"
-											: `~${batteryEstimate.remainingDays} days at ${refreshPerDay} refreshes/day`}
+											: Number.isFinite(batteryEstimate.remainingDays) && refreshPerDay > 0
+												? `~${batteryEstimate.remainingDays} days at ${Math.round(refreshPerDay)} refreshes/day`
+												: "—"}
 									</span>
 								</div>
 							</div>
