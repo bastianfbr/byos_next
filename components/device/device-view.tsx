@@ -39,7 +39,7 @@ const getSignalQuality = (rssi: number): string => {
 const calculateRefreshPerDay = (
 	deviceData: Device & { status?: string; type?: string },
 ): number => {
-	if (!deviceData?.refresh_schedule) return 0;
+	if (!deviceData?.refresh_schedule) return (24 * 60 * 60) / 300; // fallback: TRMNL default 300s
 	const defaultRefreshRate =
 		deviceData.refresh_schedule.default_refresh_rate || 300;
 	let refreshesPerDay = (24 * 60 * 60) / defaultRefreshRate;
