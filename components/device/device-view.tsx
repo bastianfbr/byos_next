@@ -361,8 +361,10 @@ export default function DeviceView({
 									<span className="text-xs text-muted-foreground">
 										{batteryEstimate.isCharging
 											? "Estimating while charging"
-											: Number.isFinite(batteryEstimate.remainingDays) && refreshPerDay > 0
-												? `~${batteryEstimate.remainingDays} days at ${Math.round(refreshPerDay)} refreshes/day`
+											: Number.isFinite(batteryEstimate.remainingDays)
+												? refreshPerDay > 0
+													? `~${batteryEstimate.remainingDays} days at ${Math.round(refreshPerDay)} refreshes/day`
+													: `~${batteryEstimate.remainingDays} days`
 												: "—"}
 									</span>
 								</div>
