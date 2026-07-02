@@ -212,6 +212,290 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"birthday-menu": {
+		"title": "Birthday Menu",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "A beautiful customizable birthday menu recipe screen, ideal for displaying on dinner/aperitif tables.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "apero"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-apero": {
+		"title": "Menu Apéritif Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu d'apéritif d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "apero"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-plat": {
+		"title": "Menu Plat Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu plat principal d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "plat"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-dessert": {
+		"title": "Menu Dessert Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu dessert d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "dessert"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"not-found": {
 		"title": "Not Found Recipe",
 		"published": true,
