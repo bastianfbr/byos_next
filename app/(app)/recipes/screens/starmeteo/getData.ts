@@ -128,14 +128,17 @@ async function getStarMeteoData(
 		]);
 
 		if (!defaultResponse.ok) {
-			throw new Error(`Open-Meteo responded with status: ${defaultResponse.status}`);
+			throw new Error(
+				`Open-Meteo responded with status: ${defaultResponse.status}`,
+			);
 		}
 
 		const defaultData: OpenMeteoResponse = await defaultResponse.json();
 
 		// Use AROME data if available, otherwise fall back to default model data
-		const aromeData: OpenMeteoResponse | null =
-			aromeResponse.ok ? await aromeResponse.json() : null;
+		const aromeData: OpenMeteoResponse | null = aromeResponse.ok
+			? await aromeResponse.json()
+			: null;
 
 		const data = aromeData ?? defaultData;
 
@@ -168,7 +171,7 @@ async function getStarMeteoData(
 			currentMin: formatTemp(data.daily.temperature_2m_min[0]),
 			currentIcon: mapWeatherCodeToIconType(data.current.weather_code),
 			time: localTime,
-			probeTemp: Math.round((data.current.temperature_2m * 10) / 10).toFixed(1), // keep 1 decimal place for external probe (e.g. 17.3)
+			probeTemp: data.current.temperature_2m.toFixed(1), // keep 1 decimal place for external probe (e.g. 17.3)
 			forecastTomorrowMax: formatTemp(data.daily.temperature_2m_max[1]),
 			forecastTomorrowMin: formatTemp(data.daily.temperature_2m_min[1]),
 			forecastTomorrowIcon: mapWeatherCodeToIconType(
