@@ -354,6 +354,111 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"birthday-menu-apero-columns": {
+		"title": "Menu Apéritif 2 Colonnes",
+		"published": true,
+		"createdAt": "2026-07-14T12:00:00Z",
+		"updatedAt": "2026-07-14T12:00:00Z",
+		"description": "Recette du menu d'apéritif d'anniversaire présenté sur 2 colonnes avec tartelettes en bas.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Titre affiché en haut du menu",
+				"default": "L'Apéritif de Fête"
+			},
+			"verrine1": {
+				"type": "string",
+				"label": "Verrine 1",
+				"default": "Saumon fumé / Tzatziki"
+			},
+			"verrine2": {
+				"type": "string",
+				"label": "Verrine 2",
+				"default": "Ktipiti (Poivron / Féta)"
+			},
+			"verrine3": {
+				"type": "string",
+				"label": "Verrine 3",
+				"default": "Mousse de carotte + Crème de choux fleur"
+			},
+			"verrine4": {
+				"type": "string",
+				"label": "Verrine 4",
+				"default": "Crème de crevettes + Pétoncle"
+			},
+			"verrine5": {
+				"type": "string",
+				"label": "Verrine 5",
+				"default": "Betteraves rouges"
+			},
+			"feuillete1": {
+				"type": "string",
+				"label": "Feuilleté 1",
+				"default": "Escargots au Pesto"
+			},
+			"feuillete2": {
+				"type": "string",
+				"label": "Feuilleté 2",
+				"default": "Sacristains"
+			},
+			"feuillete3": {
+				"type": "string",
+				"label": "Feuilleté 3",
+				"default": "Anchois"
+			},
+			"feuillete4": {
+				"type": "string",
+				"label": "Feuilleté 4",
+				"default": "Crackers sésame"
+			},
+			"tartelette1": {
+				"type": "string",
+				"label": "Tartelette 1",
+				"default": "Flambées"
+			},
+			"tartelette2": {
+				"type": "string",
+				"label": "Tartelette 2",
+				"default": "Oignons"
+			},
+			"tartelette3": {
+				"type": "string",
+				"label": "Tartelette 3",
+				"default": "Quiches"
+			},
+			"tartelette4": {
+				"type": "string",
+				"label": "Tartelette 4",
+				"default": "Pizzas"
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"birthday-menu-plat": {
 		"title": "Menu Plat Justine",
 		"published": true,
