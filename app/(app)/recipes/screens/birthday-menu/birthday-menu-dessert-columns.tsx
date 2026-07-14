@@ -75,7 +75,7 @@ export default function BirthdayMenuDessertColumns({
 				>
 					{/* Inner thin border */}
 					<div
-						className="w-full h-full flex flex-col items-center p-6 relative justify-between"
+						className="w-full h-full flex flex-col items-center p-5 relative justify-start gap-1.5"
 						style={{
 							borderWidth: 2,
 							borderStyle: "solid",
@@ -99,17 +99,17 @@ export default function BirthdayMenuDessertColumns({
 						</span>
 
 						{/* Header Section */}
-						<div className="flex flex-col items-center w-full mt-1">
+						<div className="flex flex-col items-center w-full mt-0.5">
 							<h1 className="font-inter text-[30px] font-black tracking-widest uppercase text-black leading-none text-center">
 								{menuTitle}
 							</h1>
 
-							<div className="font-inter text-[16px] tracking-widest text-neutral-700 mt-1.5 uppercase font-semibold">
+							<div className="font-inter text-[16px] tracking-widest text-neutral-700 mt-1 uppercase font-semibold">
 								Joyeux {age} ans, {sisterName} !
 							</div>
 
 							{/* Elegant divider */}
-							<div className="flex items-center justify-center my-2 w-full max-w-[450px]">
+							<div className="flex items-center justify-center my-1.5 w-full max-w-[450px]">
 								<div className="flex-1 h-[2px] bg-black"></div>
 								<div className="mx-3 w-2.5 h-2.5 rounded-full bg-black"></div>
 								<div className="flex-1 h-[2px] bg-black"></div>
@@ -117,31 +117,31 @@ export default function BirthdayMenuDessertColumns({
 						</div>
 
 						{/* Line-based (row) Middle Section */}
-						<div className="flex flex-col w-full flex-grow justify-center px-4 gap-2">
+						<div className="flex flex-col w-full flex-grow justify-start px-4 pt-1 gap-2.5">
 							{/* Pâtisseries Section Header */}
-							<div className="flex flex-row items-center w-full border-b border-black pb-1 mb-1">
-								<h2 className="font-inter text-[15px] font-extrabold tracking-widest uppercase text-black">
+							<div className="flex flex-row items-center w-full border-b border-black pb-1">
+								<h2 className="font-inter text-[17px] font-extrabold tracking-widest uppercase text-black">
 									Les Pâtisseries
 								</h2>
 							</div>
 
 							{/* Pastry Rows */}
-							<div className="flex flex-col w-full gap-2.5">
+							<div className="flex flex-col w-full gap-3">
 								{desserts.map((item, idx) => (
 									<div
 										key={idx}
-										className="flex flex-row w-full items-center justify-between py-1 border-b border-dashed border-neutral-300 last:border-b-0"
+										className="flex flex-row w-full items-start justify-between py-1.5 border-b border-dashed border-neutral-300 last:border-b-0"
 									>
 										{/* Title Left */}
-										<div className="w-[38%] flex items-center pr-2">
-											<span className="font-inter text-[14.5px] font-black uppercase tracking-wide text-left leading-tight">
+										<div className="w-[38%] flex items-start pr-2 mt-0.5">
+											<span className="font-inter text-[17.5px] font-black uppercase tracking-wide text-left leading-tight">
 												{item.title}
 											</span>
 										</div>
 
 										{/* Description Right */}
-										<div className="w-[60%] flex items-center pl-2">
-											<span className="font-inter text-[11.5px] italic font-normal text-black text-left leading-snug">
+										<div className="w-[60%] flex items-start pl-2">
+											<span className="font-inter text-[14px] font-bold text-black text-left leading-snug">
 												{item.desc}
 											</span>
 										</div>
@@ -151,19 +151,19 @@ export default function BirthdayMenuDessertColumns({
 
 							{/* Glaces / Sorbets Row Section */}
 							<div
-								className="flex flex-row w-full items-center justify-between mt-3 pt-3"
+								className="flex flex-row w-full items-center justify-between mt-auto pt-3 pb-1"
 								style={{ borderTop: "2px solid #000000" }}
 							>
 								{/* Title Left */}
 								<div className="w-[38%] flex items-center pr-2">
-									<h2 className="font-inter text-[15px] font-black uppercase tracking-widest text-left leading-tight">
+									<h2 className="font-inter text-[17.5px] font-black uppercase tracking-widest text-left leading-tight">
 										Les Glaces / Sorbets
 									</h2>
 								</div>
 
 								{/* Flavors Right */}
 								<div className="w-[60%] flex items-center pl-2">
-									<span className="font-inter text-[13.5px] font-black uppercase tracking-wider text-black text-left leading-snug">
+									<span className="font-inter text-[16px] font-black uppercase tracking-wider text-black text-left leading-snug">
 										{glaces.join("  •  ")}
 									</span>
 								</div>
