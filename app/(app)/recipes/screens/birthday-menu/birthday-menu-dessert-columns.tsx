@@ -104,9 +104,26 @@ export default function BirthdayMenuDessertColumns({
 						<span className="absolute bottom-1 left-2 text-[10px] font-bold">
 							~
 						</span>
-						<span className="absolute bottom-1 right-2 text-[10px] font-bold">
-							~
-						</span>
+						<div className="absolute bottom-1.5 right-3 flex flex-row items-center gap-1 text-neutral-800">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="12"
+								height="12"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2.5"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							>
+								<title>Tout maison</title>
+								<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+								<polyline points="9 22 9 12 15 12 15 22" />
+							</svg>
+							<span className="font-inter text-[10.5px] font-black uppercase tracking-wider">
+								Tout maison
+							</span>
+						</div>
 
 						{/* Header Section */}
 						<div className="flex flex-col items-center w-full mt-0.5">
