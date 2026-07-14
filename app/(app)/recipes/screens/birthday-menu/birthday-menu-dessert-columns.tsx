@@ -33,7 +33,8 @@ export default function BirthdayMenuDessertColumns({
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
 	const menuTitle = params?.title || "Les Desserts de Fête";
-	const glaceSubtitle = params?.glaceSubtitle || "(coupelles chocolat en gaufrette)";
+	const glaceSubtitle =
+		params?.glaceSubtitle || "(coupelles chocolat en gaufrette)";
 
 	const desserts = [
 		{
@@ -169,7 +170,7 @@ export default function BirthdayMenuDessertColumns({
 										Les Glaces / Sorbets
 									</h2>
 									{glaceSubtitle && (
-										<span className="font-inter text-[14px] font-bold text-neutral-800 text-left leading-none mt-1">
+										<span className="font-inter text-[16px] font-bold text-neutral-800 text-left leading-none mt-1">
 											{glaceSubtitle}
 										</span>
 									)}
