@@ -163,7 +163,7 @@ export default function BirthdayMenuDessertColumns({
 							</div>
 
 							{/* Glaces / Sorbets Row Section */}
-							<div className="flex flex-row w-full items-center justify-between mt-auto pb-0.5">
+							<div className="flex flex-row w-full items-center justify-between mt-auto pt-2.5 pb-0.5" style={{ borderTop: "2px solid #000000" }}>
 								{/* Title Left */}
 								<div className="w-[38%] flex flex-col items-start pr-2">
 									<h2
