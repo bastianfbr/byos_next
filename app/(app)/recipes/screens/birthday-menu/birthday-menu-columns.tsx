@@ -37,7 +37,7 @@ export default function BirthdayMenuColumns({
 	const verrines = [
 		params?.verrine1 || "Saumon fumé / Tzatziki",
 		params?.verrine2 || "Ktipiti (Poivrons / Féta)",
-		params?.verrine3 || "Mousse carotte et Crème chou fleur",
+		params?.verrine3 || "Mousse carotte et\nCrème chou fleur",
 		params?.verrine4 || "Crème de crevettes et Pétoncle",
 		params?.verrine5 || "Nuage Betteraves / Chèvre",
 	].filter(Boolean);
@@ -128,6 +128,7 @@ export default function BirthdayMenuColumns({
 										<span
 											key={idx}
 											className="font-inter text-[16.5px] font-black text-center uppercase tracking-wide leading-tight max-w-[310px] break-words"
+											style={{ whiteSpace: "pre-line" }}
 										>
 											{item}
 										</span>
@@ -159,6 +160,7 @@ export default function BirthdayMenuColumns({
 										<span
 											key={idx}
 											className="font-inter text-[16.5px] font-black text-center uppercase tracking-wide leading-tight max-w-[310px] break-words"
+											style={{ whiteSpace: "pre-line" }}
 										>
 											{item}
 										</span>

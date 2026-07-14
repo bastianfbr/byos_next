@@ -395,7 +395,7 @@
 			"verrine3": {
 				"type": "string",
 				"label": "Verrine 3",
-				"default": "Mousse carotte et Crème chou fleur"
+				"default": "Mousse carotte et\nCrème chou fleur"
 			},
 			"verrine4": {
 				"type": "string",
