@@ -32,7 +32,7 @@ export default function BirthdayMenuColumns({
 	// Extract parameters with default values based on the request
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
-	const menuTitle = params?.title || "L'Apéritif de Fête";
+	const menuTitle = params?.title || "L'Apéritif";
 
 	const verrines = [
 		params?.verrine1 || "Saumon fumé / Tzatziki",
