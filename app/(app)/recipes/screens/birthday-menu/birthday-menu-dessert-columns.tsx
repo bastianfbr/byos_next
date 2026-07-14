@@ -32,7 +32,7 @@ export default function BirthdayMenuDessertColumns({
 	// Extract parameters with default values
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
-	const menuTitle = params?.title || "Les Desserts de Fête";
+	const menuTitle = params?.title || "Les Desserts";
 	const glaceSubtitle =
 		params?.glaceSubtitle || "(coupelles chocolat en gaufrette)";
 
@@ -129,8 +129,11 @@ export default function BirthdayMenuDessertColumns({
 						{/* Line-based (row) Middle Section */}
 						<div className="flex flex-col w-full flex-grow justify-start px-4 pt-1 gap-2">
 							{/* Pâtisseries Section Header */}
-							<div className="flex flex-row items-center w-full border-b border-black pb-1">
-								<h2 className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black">
+							<div className="flex flex-row items-center w-full pb-1">
+								<h2
+									className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black"
+									style={{ textDecoration: "underline" }}
+								>
 									Les Pâtisseries
 								</h2>
 							</div>
@@ -160,13 +163,13 @@ export default function BirthdayMenuDessertColumns({
 							</div>
 
 							{/* Glaces / Sorbets Row Section */}
-							<div
-								className="flex flex-row w-full items-center justify-between mt-auto pt-2.5 pb-0.5"
-								style={{ borderTop: "2px solid #000000" }}
-							>
+							<div className="flex flex-row w-full items-center justify-between mt-auto pb-0.5">
 								{/* Title Left */}
 								<div className="w-[38%] flex flex-col items-start pr-2">
-									<h2 className="font-inter text-[18px] font-black uppercase tracking-widest text-left leading-tight">
+									<h2
+										className="font-inter text-[18px] font-black uppercase tracking-widest text-left leading-tight"
+										style={{ textDecoration: "underline" }}
+									>
 										Les Glaces / Sorbets
 									</h2>
 									{glaceSubtitle && (
