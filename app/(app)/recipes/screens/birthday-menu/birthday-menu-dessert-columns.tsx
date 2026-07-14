@@ -136,7 +136,7 @@ export default function BirthdayMenuDessertColumns({
 												{item.title}
 											</span>
 											{item.desc && (
-												<span className="font-inter text-[11.5px] italic font-normal text-black text-center tracking-normal leading-tight mt-0.5 max-w-[280px] break-words">
+												<span className="font-inter text-[14.5px] italic font-normal text-black text-center tracking-normal leading-tight mt-0.5 max-w-[280px] break-words">
 													{item.desc}
 												</span>
 											)}
