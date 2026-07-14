@@ -8,9 +8,11 @@ interface BirthdayMenuDessertColumnsProps {
 		age?: number;
 		title?: string;
 		dessert1?: string;
+		dessert1Desc?: string;
 		dessert2?: string;
+		dessert2Desc?: string;
 		dessert3?: string;
-		dessert4?: string;
+		dessert3Desc?: string;
 		glace1?: string;
 		glace2?: string;
 		glace3?: string;
@@ -30,11 +32,24 @@ export default function BirthdayMenuDessertColumns({
 	const menuTitle = params?.title || "Les Desserts de Fête";
 
 	const desserts = [
-		params?.dessert1 || "Féminin Fraise Framboise",
-		params?.dessert2 || "Tarte Yuzu",
-		params?.dessert3 || "Barista",
-		params?.dessert4 || "",
-	].filter(Boolean);
+		{
+			title: params?.dessert1 || "Féminin fraise-framboise",
+			desc:
+				params?.dessert1Desc ||
+				"Mousse fromage blanc, panna cotta citron vert, compotée fraise-framboise, biscuit amandes",
+		},
+		{
+			title: params?.dessert2 || "Tarte yuzu",
+			desc:
+				params?.dessert2Desc || "Fond sablé, crémeux citron, meringue au yuzu",
+		},
+		{
+			title: params?.dessert3 || "Barista",
+			desc:
+				params?.dessert3Desc ||
+				"Biscuit noisette, croustillant gianduja, crémeux cappuccino, ganaches café et noisette",
+		},
+	].filter((d) => d.title);
 
 	const glaces = [
 		params?.glace1 || "Café",
@@ -103,7 +118,7 @@ export default function BirthdayMenuDessertColumns({
 
 						{/* Two-Column Middle Section */}
 						<div className="flex flex-row w-full justify-between items-stretch my-2 flex-1">
-							{/* Left Column - Desserts */}
+							{/* Left Column - Pâtisseries */}
 							<div className="w-[47%] flex flex-col items-center">
 								<h2
 									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
@@ -113,13 +128,19 @@ export default function BirthdayMenuDessertColumns({
 								</h2>
 								<div className="flex flex-col items-center justify-center flex-grow gap-4">
 									{desserts.map((item, idx) => (
-										<span
+										<div
 											key={idx}
-											className="font-inter text-[17.5px] font-black text-center uppercase tracking-wide leading-snug max-w-[310px] break-words"
-											style={{ whiteSpace: "pre-line" }}
+											className="flex flex-col items-center w-full"
 										>
-											{item}
-										</span>
+											<span className="font-inter text-[16.5px] font-black text-center uppercase tracking-wide leading-tight max-w-[310px] break-words">
+												{item.title}
+											</span>
+											{item.desc && (
+												<span className="font-inter text-[11.5px] italic font-normal text-black text-center tracking-normal leading-tight mt-0.5 max-w-[280px] break-words">
+													{item.desc}
+												</span>
+											)}
+										</div>
 									))}
 								</div>
 							</div>
@@ -135,7 +156,7 @@ export default function BirthdayMenuDessertColumns({
 								}}
 							/>
 
-							{/* Right Column - Glaces */}
+							{/* Right Column - Glaces / Sorbets */}
 							<div className="w-[47%] flex flex-col items-center">
 								<h2
 									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
@@ -143,11 +164,11 @@ export default function BirthdayMenuDessertColumns({
 								>
 									Les Glaces / Sorbets
 								</h2>
-								<div className="flex flex-col items-center justify-center flex-grow gap-4">
+								<div className="flex flex-col items-center justify-center flex-grow gap-5">
 									{glaces.map((item, idx) => (
 										<span
 											key={idx}
-											className="font-inter text-[17.5px] font-black text-center uppercase tracking-wide leading-snug max-w-[310px] break-words"
+											className="font-inter text-[18px] font-black text-center uppercase tracking-wide leading-snug max-w-[310px] break-words"
 											style={{ whiteSpace: "pre-line" }}
 										>
 											{item}

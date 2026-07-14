@@ -632,17 +632,32 @@
 			"dessert1": {
 				"type": "string",
 				"label": "Dessert 1",
-				"default": "Féminin Fraise Framboise"
+				"default": "Féminin fraise-framboise"
+			},
+			"dessert1Desc": {
+				"type": "string",
+				"label": "Dessert 1 Description",
+				"default": "Mousse fromage blanc, panna cotta citron vert, compotée fraise-framboise, biscuit amandes"
 			},
 			"dessert2": {
 				"type": "string",
 				"label": "Dessert 2",
-				"default": "Tarte Yuzu"
+				"default": "Tarte yuzu"
+			},
+			"dessert2Desc": {
+				"type": "string",
+				"label": "Dessert 2 Description",
+				"default": "Fond sablé, crémeux citron, meringue au yuzu"
 			},
 			"dessert3": {
 				"type": "string",
 				"label": "Dessert 3",
 				"default": "Barista"
+			},
+			"dessert3Desc": {
+				"type": "string",
+				"label": "Dessert 3 Description",
+				"default": "Biscuit noisette, croustillant gianduja, crémeux cappuccino, ganaches café et noisette"
 			},
 			"glace1": {
 				"type": "string",
