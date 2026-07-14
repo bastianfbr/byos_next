@@ -601,6 +601,81 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"birthday-menu-dessert-columns": {
+		"title": "Menu Dessert 2 Colonnes",
+		"published": true,
+		"createdAt": "2026-07-14T14:30:00Z",
+		"updatedAt": "2026-07-14T14:30:00Z",
+		"description": "Recette du menu dessert d'anniversaire présenté sur 2 colonnes (desserts à gauche, glaces à droite).",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Titre affiché en haut du menu",
+				"default": "Le Dessert"
+			},
+			"dessert1": {
+				"type": "string",
+				"label": "Dessert 1",
+				"default": "Féminin Fraise Framboise"
+			},
+			"dessert2": {
+				"type": "string",
+				"label": "Dessert 2",
+				"default": "Tarte Yuzu"
+			},
+			"dessert3": {
+				"type": "string",
+				"label": "Dessert 3",
+				"default": "Barista"
+			},
+			"glace1": {
+				"type": "string",
+				"label": "Glace 1",
+				"default": "Café"
+			},
+			"glace2": {
+				"type": "string",
+				"label": "Glace 2",
+				"default": "Praliné"
+			},
+			"glace3": {
+				"type": "string",
+				"label": "Glace 3",
+				"default": "Chocolat"
+			},
+			"glace4": {
+				"type": "string",
+				"label": "Glace 4",
+				"default": "Vanille"
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"not-found": {
 		"title": "Not Found Recipe",
 		"published": true,

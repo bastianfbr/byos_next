@@ -147,6 +147,7 @@ export const fetchRecipeConfig = cache(
 import AlbumComponent from "@/app/(app)/recipes/screens/album/album";
 import BirthdayMenuComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu";
 import BirthdayMenuColumnsComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu-columns";
+import BirthdayMenuDessertColumnsComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu-dessert-columns";
 import BitcoinPriceComponent from "@/app/(app)/recipes/screens/bitcoin-price/bitcoin-price";
 import BitcoinPriceData from "@/app/(app)/recipes/screens/bitcoin-price/getData";
 import BitmapPatternsComponent from "@/app/(app)/recipes/screens/bitmap-patterns/bitmap-patterns";
@@ -169,6 +170,7 @@ const COMPONENT_IMPORTERS: Record<string, any> = {
 	"birthday-menu-apero-columns": BirthdayMenuColumnsComponent,
 	"birthday-menu-plat": BirthdayMenuComponent,
 	"birthday-menu-dessert": BirthdayMenuComponent,
+	"birthday-menu-dessert-columns": BirthdayMenuDessertColumnsComponent,
 	"bitcoin-price": BitcoinPriceComponent,
 	"bitmap-patterns": BitmapPatternsComponent,
 	"not-found": NotFoundScreenComponent,
