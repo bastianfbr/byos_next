@@ -693,6 +693,11 @@
 				"type": "string",
 				"label": "Glace 7",
 				"default": "Orange sanguine"
+			},
+			"glaceSubtitle": {
+				"type": "string",
+				"label": "Sous-titre des glaces",
+				"default": "(gaufrettes chocolat)"
 			}
 		},
 		"tags": ["menu", "birthday", "party", "customizable"],

@@ -20,6 +20,7 @@ interface BirthdayMenuDessertColumnsProps {
 		glace5?: string;
 		glace6?: string;
 		glace7?: string;
+		glaceSubtitle?: string;
 	};
 }
 
@@ -32,6 +33,7 @@ export default function BirthdayMenuDessertColumns({
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
 	const menuTitle = params?.title || "Les Desserts de Fête";
+	const glaceSubtitle = params?.glaceSubtitle || "(gaufrettes chocolat)";
 
 	const desserts = [
 		{
@@ -141,14 +143,14 @@ export default function BirthdayMenuDessertColumns({
 									>
 										{/* Title Left */}
 										<div className="w-[38%] flex items-start pr-2 mt-0.5">
-											<span className="font-inter text-[18px] font-black uppercase tracking-wide text-left leading-tight">
+											<span className="font-inter text-[20px] font-black uppercase tracking-wide text-left leading-tight">
 												{item.title}
 											</span>
 										</div>
 
 										{/* Description Right */}
 										<div className="w-[60%] flex items-start pl-2">
-											<span className="font-inter text-[15.5px] font-bold text-black text-left leading-snug">
+											<span className="font-inter text-[17px] font-bold text-black text-left leading-snug">
 												{item.desc}
 											</span>
 										</div>
@@ -162,18 +164,23 @@ export default function BirthdayMenuDessertColumns({
 								style={{ borderTop: "2px solid #000000" }}
 							>
 								{/* Title Left */}
-								<div className="w-[38%] flex items-center pr-2">
-									<h2 className="font-inter text-[17.5px] font-black uppercase tracking-widest text-left leading-tight">
+								<div className="w-[38%] flex flex-col items-start pr-2">
+									<h2 className="font-inter text-[18px] font-black uppercase tracking-widest text-left leading-tight">
 										Les Glaces / Sorbets
 									</h2>
+									{glaceSubtitle && (
+										<span className="font-inter text-[14px] font-bold text-neutral-800 text-left leading-none mt-1">
+											{glaceSubtitle}
+										</span>
+									)}
 								</div>
 
 								{/* Flavors Right */}
 								<div className="w-[60%] flex flex-col items-start justify-center pl-2 gap-1">
-									<span className="font-inter text-[15px] font-black uppercase tracking-wider text-black text-left leading-tight">
+									<span className="font-inter text-[16px] font-black uppercase tracking-wider text-black text-left leading-tight">
 										{glacesLine1.join("  •  ")}
 									</span>
-									<span className="font-inter text-[15px] font-black uppercase tracking-wider text-black text-left leading-tight">
+									<span className="font-inter text-[16px] font-black uppercase tracking-wider text-black text-left leading-tight">
 										{glacesLine2.join("  •  ")}
 									</span>
 								</div>
