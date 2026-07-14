@@ -33,7 +33,7 @@ export default function BirthdayMenuDessertColumns({
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
 	const menuTitle = params?.title || "Les Desserts de Fête";
-	const glaceSubtitle = params?.glaceSubtitle || "(gaufrettes chocolat)";
+	const glaceSubtitle = params?.glaceSubtitle || "(coupelles chocolat en gaufrette)";
 
 	const desserts = [
 		{
@@ -129,7 +129,7 @@ export default function BirthdayMenuDessertColumns({
 						<div className="flex flex-col w-full flex-grow justify-start px-4 pt-1 gap-2">
 							{/* Pâtisseries Section Header */}
 							<div className="flex flex-row items-center w-full border-b border-black pb-1">
-								<h2 className="font-inter text-[17px] font-extrabold tracking-widest uppercase text-black">
+								<h2 className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black">
 									Les Pâtisseries
 								</h2>
 							</div>
@@ -143,7 +143,7 @@ export default function BirthdayMenuDessertColumns({
 									>
 										{/* Title Left */}
 										<div className="w-[38%] flex items-start pr-2 mt-0.5">
-											<span className="font-inter text-[20px] font-black uppercase tracking-wide text-left leading-tight">
+											<span className="font-inter text-[18px] font-black uppercase tracking-wide text-left leading-tight">
 												{item.title}
 											</span>
 										</div>
