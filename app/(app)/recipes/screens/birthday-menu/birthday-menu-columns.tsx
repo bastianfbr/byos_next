@@ -37,7 +37,7 @@ export default function BirthdayMenuColumns({
 	const verrines = [
 		params?.verrine1 || "Saumon fumé / Tzatziki",
 		params?.verrine2 || "Ktipiti (Poivrons / Féta)",
-		params?.verrine3 || "Mousse carotte et\nCrème chou fleur",
+		params?.verrine3 || "Mousse de carotte et\nCrème de chou fleur",
 		params?.verrine4 || "Émulsion de crevettes et pétoncles rôties",
 		params?.verrine5 || "Crème de betterave et chantilly chèvre",
 	].filter(Boolean);
@@ -72,7 +72,7 @@ export default function BirthdayMenuColumns({
 				>
 					{/* Inner thin border */}
 					<div
-						className="w-full h-full flex flex-col items-center p-5 relative justify-between"
+						className="w-full h-full flex flex-col items-center pt-5 px-5 pb-3 relative justify-between"
 						style={{
 							borderWidth: 2,
 							borderStyle: "solid",
@@ -170,12 +170,12 @@ export default function BirthdayMenuColumns({
 						</div>
 
 						{/* Bottom Section - Tartelettes */}
-						<div className="flex flex-col items-center w-full mt-1.5">
+						<div className="flex flex-col items-center w-full mt-0.5">
 							{/* Horizontal Divider */}
-							<div className="w-[90%] h-[1.5px] bg-neutral-400 mb-2"></div>
+							<div className="w-[90%] h-[1.5px] bg-neutral-400 mb-1.5"></div>
 
 							<h2
-								className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black pb-1 mb-2 text-center"
+								className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black pb-1 mb-1.5 text-center"
 								style={{ borderBottom: "2px solid #000000", width: "40%" }}
 							>
 								Les Tartelettes
