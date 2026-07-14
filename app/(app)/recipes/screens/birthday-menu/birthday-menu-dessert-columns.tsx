@@ -34,7 +34,7 @@ export default function BirthdayMenuDessertColumns({
 	const age = params?.age ?? 30;
 	const menuTitle = params?.title || "Les Desserts";
 	const glaceSubtitle =
-		params?.glaceSubtitle || "(coupelles chocolat en gaufrette)";
+		params?.glaceSubtitle || "(coupelles gaufrette en chocolat)";
 
 	const desserts = [
 		{

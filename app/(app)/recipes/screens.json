@@ -697,7 +697,7 @@
 			"glaceSubtitle": {
 				"type": "string",
 				"label": "Sous-titre des glaces",
-				"default": "(coupelles chocolat en gaufrette)"
+				"default": "(coupelles gaufrette en chocolat)"
 			}
 		},
 		"tags": ["menu", "birthday", "party", "customizable"],
