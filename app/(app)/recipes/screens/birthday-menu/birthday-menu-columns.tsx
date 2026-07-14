@@ -182,7 +182,7 @@ export default function BirthdayMenuColumns({
 							<div className="flex flex-row items-center justify-center gap-6">
 								{tartelettes.map((item, idx) => (
 									<React.Fragment key={idx}>
-										<span className="font-inter text-[15px] font-bold uppercase tracking-wider">
+										<span className="font-inter text-[16.5px] font-black uppercase tracking-wider">
 											{item}
 										</span>
 										{idx < tartelettes.length - 1 && (
