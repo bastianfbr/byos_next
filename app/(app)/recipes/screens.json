@@ -662,22 +662,37 @@
 			"glace1": {
 				"type": "string",
 				"label": "Glace 1",
-				"default": "Café"
+				"default": "Vanille"
 			},
 			"glace2": {
 				"type": "string",
 				"label": "Glace 2",
-				"default": "Praliné"
+				"default": "Chocolat"
 			},
 			"glace3": {
 				"type": "string",
 				"label": "Glace 3",
-				"default": "Chocolat"
+				"default": "Café"
 			},
 			"glace4": {
 				"type": "string",
 				"label": "Glace 4",
-				"default": "Vanille"
+				"default": "Praliné"
+			},
+			"glace5": {
+				"type": "string",
+				"label": "Glace 5",
+				"default": "Pamplemousse rose"
+			},
+			"glace6": {
+				"type": "string",
+				"label": "Glace 6",
+				"default": "Citron vert"
+			},
+			"glace7": {
+				"type": "string",
+				"label": "Glace 7",
+				"default": "Orange sanguine"
 			}
 		},
 		"tags": ["menu", "birthday", "party", "customizable"],
