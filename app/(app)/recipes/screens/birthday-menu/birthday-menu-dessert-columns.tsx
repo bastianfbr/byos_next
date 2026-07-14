@@ -27,7 +27,7 @@ export default function BirthdayMenuDessertColumns({
 	// Extract parameters with default values
 	const sisterName = params?.sisterName || "Justine";
 	const age = params?.age ?? 30;
-	const menuTitle = params?.title || "Le Dessert";
+	const menuTitle = params?.title || "Les Desserts de Fête";
 
 	const desserts = [
 		params?.dessert1 || "Féminin Fraise Framboise",
@@ -109,7 +109,7 @@ export default function BirthdayMenuDessertColumns({
 									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
 									style={{ borderBottom: "2px solid #000000", width: "80%" }}
 								>
-									Les Desserts
+									Les Pâtisseries
 								</h2>
 								<div className="flex flex-col items-center justify-center flex-grow gap-4">
 									{desserts.map((item, idx) => (
@@ -141,7 +141,7 @@ export default function BirthdayMenuDessertColumns({
 									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
 									style={{ borderBottom: "2px solid #000000", width: "80%" }}
 								>
-									Les Glaces
+									Les Glaces / Sorbets
 								</h2>
 								<div className="flex flex-col items-center justify-center flex-grow gap-4">
 									{glaces.map((item, idx) => (

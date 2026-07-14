@@ -627,7 +627,7 @@
 				"type": "string",
 				"label": "Titre du Menu",
 				"description": "Titre affiché en haut du menu",
-				"default": "Le Dessert"
+				"default": "Les Desserts de Fête"
 			},
 			"dessert1": {
 				"type": "string",
