@@ -36,14 +36,14 @@ export default function BirthdayMenuColumns({
 
 	const verrines = [
 		params?.verrine1 || "Saumon fumé / Tzatziki",
-		params?.verrine2 || "Ktipiti (Poivron / Féta)",
-		params?.verrine3 || "Mousse de carotte + Crème de choux fleur",
-		params?.verrine4 || "Crème de crevettes + Pétoncle",
-		params?.verrine5 || "Betteraves rouges",
+		params?.verrine2 || "Ktipiti (Poivrons / Féta)",
+		params?.verrine3 || "Mousse carotte et Crème chou fleur",
+		params?.verrine4 || "Crème de crevettes et Pétoncle",
+		params?.verrine5 || "Nuage Betteraves / Chèvre",
 	].filter(Boolean);
 
 	const feuilletes = [
-		params?.feuillete1 || "Escargots au Pesto",
+		params?.feuillete1 || "Spirales au Pesto",
 		params?.feuillete2 || "Sacristains",
 		params?.feuillete3 || "Anchois",
 		params?.feuillete4 || "Crackers sésame",
