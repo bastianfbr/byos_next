@@ -128,14 +128,17 @@ async function getStarMeteoData(
 		]);
 
 		if (!defaultResponse.ok) {
-			throw new Error(`Open-Meteo responded with status: ${defaultResponse.status}`);
+			throw new Error(
+				`Open-Meteo responded with status: ${defaultResponse.status}`,
+			);
 		}
 
 		const defaultData: OpenMeteoResponse = await defaultResponse.json();
 
 		// Use AROME data if available, otherwise fall back to default model data
-		const aromeData: OpenMeteoResponse | null =
-			aromeResponse.ok ? await aromeResponse.json() : null;
+		const aromeData: OpenMeteoResponse | null = aromeResponse.ok
+			? await aromeResponse.json()
+			: null;
 
 		const data = aromeData ?? defaultData;
 
