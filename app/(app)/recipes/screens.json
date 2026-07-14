@@ -390,27 +390,27 @@
 			"verrine2": {
 				"type": "string",
 				"label": "Verrine 2",
-				"default": "Ktipiti (Poivron / Féta)"
+				"default": "Ktipiti (Poivrons / Féta)"
 			},
 			"verrine3": {
 				"type": "string",
 				"label": "Verrine 3",
-				"default": "Mousse de carotte + Crème de choux fleur"
+				"default": "Mousse carotte et Crème chou fleur"
 			},
 			"verrine4": {
 				"type": "string",
 				"label": "Verrine 4",
-				"default": "Crème de crevettes + Pétoncle"
+				"default": "Crème de crevettes et Pétoncle"
 			},
 			"verrine5": {
 				"type": "string",
 				"label": "Verrine 5",
-				"default": "Betteraves rouges"
+				"default": "Nuage Betteraves / Chèvre"
 			},
 			"feuillete1": {
 				"type": "string",
 				"label": "Feuilleté 1",
-				"default": "Escargots au Pesto"
+				"default": "Spirales au Pesto"
 			},
 			"feuillete2": {
 				"type": "string",
