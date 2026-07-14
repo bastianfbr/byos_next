@@ -131,8 +131,8 @@ export default function BirthdayMenuDessertColumns({
 							{/* Pâtisseries Section Header */}
 							<div className="flex flex-row items-center w-full pb-1">
 								<h2
-									className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black"
-									style={{ textDecoration: "underline" }}
+									className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black pb-1 mb-1"
+									style={{ borderBottom: "2px solid #000000", width: "50%" }}
 								>
 									Les Pâtisseries
 								</h2>
@@ -167,8 +167,8 @@ export default function BirthdayMenuDessertColumns({
 								{/* Title Left */}
 								<div className="w-[38%] flex flex-col items-start pr-2">
 									<h2
-										className="font-inter text-[18px] font-black uppercase tracking-widest text-left leading-tight"
-										style={{ textDecoration: "underline" }}
+										className="font-inter text-[18px] font-black uppercase tracking-widest text-left leading-tight pb-1 mb-1"
+										style={{ borderBottom: "2px solid #000000" }}
 									>
 										Les Glaces / Sorbets
 									</h2>
