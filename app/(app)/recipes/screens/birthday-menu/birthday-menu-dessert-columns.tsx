@@ -100,11 +100,11 @@ export default function BirthdayMenuDessertColumns({
 
 						{/* Header Section */}
 						<div className="flex flex-col items-center w-full mt-1">
-							<h1 className="font-inter text-[32px] font-black tracking-widest uppercase text-black leading-none text-center">
+							<h1 className="font-inter text-[30px] font-black tracking-widest uppercase text-black leading-none text-center">
 								{menuTitle}
 							</h1>
 
-							<div className="font-inter text-[16.5px] tracking-widest text-neutral-700 mt-1.5 uppercase font-semibold">
+							<div className="font-inter text-[16px] tracking-widest text-neutral-700 mt-1.5 uppercase font-semibold">
 								Joyeux {age} ans, {sisterName} !
 							</div>
 
@@ -116,64 +116,56 @@ export default function BirthdayMenuDessertColumns({
 							</div>
 						</div>
 
-						{/* Two-Column Middle Section */}
-						<div className="flex flex-row w-full justify-between items-stretch my-2 flex-1">
-							{/* Left Column - Pâtisseries */}
-							<div className="w-[47%] flex flex-col items-center">
-								<h2
-									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
-									style={{ borderBottom: "2px solid #000000", width: "80%" }}
-								>
+						{/* Line-based (row) Middle Section */}
+						<div className="flex flex-col w-full flex-grow justify-center px-4 gap-2">
+							{/* Pâtisseries Section Header */}
+							<div className="flex flex-row items-center w-full border-b border-black pb-1 mb-1">
+								<h2 className="font-inter text-[15px] font-extrabold tracking-widest uppercase text-black">
 									Les Pâtisseries
 								</h2>
-								<div className="flex flex-col items-center justify-center flex-grow gap-4">
-									{desserts.map((item, idx) => (
-										<div
-											key={idx}
-											className="flex flex-col items-center w-full"
-										>
-											<span className="font-inter text-[16.5px] font-black text-center uppercase tracking-wide leading-tight max-w-[310px] break-words">
-												{item.title}
-											</span>
-											{item.desc && (
-												<span className="font-inter text-[14.5px] font-normal text-black text-center tracking-normal leading-tight mt-0.5 max-w-[280px] break-words">
-													{item.desc}
-												</span>
-											)}
-										</div>
-									))}
-								</div>
 							</div>
 
-							{/* Vertical Separator */}
-							<div
-								style={{
-									width: 2,
-									backgroundColor: "#000000",
-									alignSelf: "stretch",
-									marginTop: 4,
-									marginBottom: 4,
-								}}
-							/>
+							{/* Pastry Rows */}
+							<div className="flex flex-col w-full gap-2.5">
+								{desserts.map((item, idx) => (
+									<div
+										key={idx}
+										className="flex flex-row w-full items-center justify-between py-1 border-b border-dashed border-neutral-300 last:border-b-0"
+									>
+										{/* Title Left */}
+										<div className="w-[38%] flex items-center pr-2">
+											<span className="font-inter text-[14.5px] font-black uppercase tracking-wide text-left leading-tight">
+												{item.title}
+											</span>
+										</div>
 
-							{/* Right Column - Glaces / Sorbets */}
-							<div className="w-[47%] flex flex-col items-center">
-								<h2
-									className="font-inter text-[19px] font-extrabold tracking-widest uppercase text-black pb-1.5 mb-3 text-center"
-									style={{ borderBottom: "2px solid #000000", width: "80%" }}
-								>
-									Les Glaces / Sorbets
-								</h2>
-								<div className="flex flex-col items-center justify-center flex-grow gap-5">
-									{glaces.map((item, idx) => (
-										<span
-											key={idx}
-											className="font-inter text-[18px] font-black text-center uppercase tracking-wide leading-snug max-w-[310px] break-words"
-											style={{ whiteSpace: "pre-line" }}
-										>
-											{item}
-										</span>
-									))}
+										{/* Description Right */}
+										<div className="w-[60%] flex items-center pl-2">
+											<span className="font-inter text-[11.5px] italic font-normal text-black text-left leading-snug">
+												{item.desc}
+											</span>
+										</div>
+									</div>
+								))}
+							</div>
+
+							{/* Glaces / Sorbets Row Section */}
+							<div
+								className="flex flex-row w-full items-center justify-between mt-3 pt-3"
+								style={{ borderTop: "2px solid #000000" }}
+							>
+								{/* Title Left */}
+								<div className="w-[38%] flex items-center pr-2">
+									<h2 className="font-inter text-[15px] font-black uppercase tracking-widest text-left leading-tight">
+										Les Glaces / Sorbets
+									</h2>
+								</div>
+
+								{/* Flavors Right */}
+								<div className="w-[60%] flex items-center pl-2">
+									<span className="font-inter text-[13.5px] font-black uppercase tracking-wider text-black text-left leading-snug">
+										{glaces.join("  •  ")}
+									</span>
 								</div>
 							</div>
 						</div>
