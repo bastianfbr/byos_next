@@ -132,7 +132,10 @@ export default function BirthdayMenuDessertColumns({
 							<div className="flex flex-row items-center w-full pb-1">
 								<h2
 									className="font-inter text-[18px] font-extrabold tracking-widest uppercase text-black pb-1 mb-1"
-									style={{ borderBottom: "2px solid #000000", alignSelf: "flex-start" }}
+									style={{
+										borderBottom: "2px solid #000000",
+										alignSelf: "flex-start",
+									}}
 								>
 									Les Pâtisseries
 								</h2>
@@ -163,7 +166,10 @@ export default function BirthdayMenuDessertColumns({
 							</div>
 
 							{/* Glaces / Sorbets Row Section */}
-							<div className="flex flex-row w-full items-center justify-between mt-auto pt-2.5 pb-0.5" style={{ borderTop: "2px solid #000000" }}>
+							<div
+								className="flex flex-row w-full items-center justify-between mt-auto pt-2.5 pb-0.5"
+								style={{ borderTop: "2px solid #000000" }}
+							>
 								{/* Title Left */}
 								<div className="w-[38%] flex flex-col items-start pr-2">
 									<h2

@@ -400,12 +400,12 @@
 			"verrine4": {
 				"type": "string",
 				"label": "Verrine 4",
-				"default": "Crème de crevettes et Pétoncle"
+				"default": "Émulsion de crevettes et pétoncles rôties"
 			},
 			"verrine5": {
 				"type": "string",
 				"label": "Verrine 5",
-				"default": "Nuage Betteraves / Chèvre"
+				"default": "Crème de betterave et chantilly chèvre"
 			},
 			"feuillete1": {
 				"type": "string",
