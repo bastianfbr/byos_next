@@ -39,9 +39,9 @@ export default function BirthdayMenuDrinksColumns({
 	const age = params?.age ?? 30;
 	const menuTitle = params?.title || "Les Boissons";
 
-	const col1Title = params?.col1Title || "Les Bulles ET Bières";
+	const col1Title = params?.col1Title || "Les Bulles / Bières";
 	const col2Title = params?.col2Title || "Les Softs";
-	const col3Title = params?.col3Title || "Les Jus ET Eaux";
+	const col3Title = params?.col3Title || "Les Jus / Eaux";
 
 	const col1Drinks = [
 		params?.drink_c1_1 || "Champagne Maison Lejeune Rosé",
