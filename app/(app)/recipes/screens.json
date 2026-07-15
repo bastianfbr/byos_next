@@ -742,7 +742,7 @@
 			"col1Title": {
 				"type": "string",
 				"label": "Titre Colonne 1",
-				"default": "Les Bulles & Bières"
+				"default": "Les Bulles ET Bières"
 			},
 			"col2Title": {
 				"type": "string",
@@ -752,7 +752,7 @@
 			"col3Title": {
 				"type": "string",
 				"label": "Titre Colonne 3",
-				"default": "Les Jus & Eaux"
+				"default": "Les Jus ET Eaux"
 			},
 			"drink_c1_1": {
 				"type": "string",
