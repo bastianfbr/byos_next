@@ -28,6 +28,7 @@ export async function GET(
 		const widthParam = searchParams.get("width");
 		const heightParam = searchParams.get("height");
 		const grayscaleParam = searchParams.get("grayscale");
+		const formatParam = searchParams.get("format");
 
 		const width = widthParam ? parseInt(widthParam, 10) : DEFAULT_IMAGE_WIDTH;
 		const height = heightParam
@@ -40,7 +41,7 @@ export async function GET(
 		const grayscaleLevels = grayscaleParam ? parseInt(grayscaleParam, 10) : 2;
 
 		logger.info(
-			`Bitmap request for: ${bitmapPath} in ${validWidth}x${validHeight} with ${grayscaleLevels} gray levels`,
+			`Bitmap request for: ${bitmapPath} in ${validWidth}x${validHeight} with ${grayscaleLevels} gray levels (format: ${formatParam || "bmp"})`,
 		);
 
 		// Resolve the device owner so DB queries are scoped to the right user
@@ -50,6 +51,28 @@ export async function GET(
 
 		// Forward cookies so browser rendering can reuse the caller's auth session.
 		const cookieHeader = req.headers.get("cookie");
+
+		// If PNG format is requested, render and return a PNG immediately
+		if (formatParam === "png") {
+			const renders = await renderRecipeToImage({
+				slug: recipeSlug,
+				imageWidth: validWidth,
+				imageHeight: validHeight,
+				formats: ["png"],
+				userId,
+				cookies: cookieHeader || undefined,
+			});
+
+			if (renders.png && renders.png.length > 0) {
+				return new Response(new Uint8Array(renders.png), {
+					headers: {
+						"Content-Type": "image/png",
+						"Content-Length": renders.png.length.toString(),
+						"Cache-Control": "no-store",
+					},
+				});
+			}
+		}
 
 		const recipeBuffer = await renderRecipeBitmap(
 			recipeSlug,
