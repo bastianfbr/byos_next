@@ -747,7 +747,7 @@
 			"col2Title": {
 				"type": "string",
 				"label": "Titre Colonne 2",
-				"default": "Les Softs & Oasis"
+				"default": "Les Softs"
 			},
 			"col3Title": {
 				"type": "string",

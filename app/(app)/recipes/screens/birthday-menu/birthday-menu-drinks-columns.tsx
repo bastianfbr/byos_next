@@ -40,7 +40,7 @@ export default function BirthdayMenuDrinksColumns({
 	const menuTitle = params?.title || "Les Boissons";
 
 	const col1Title = params?.col1Title || "Les Bulles & Bières";
-	const col2Title = params?.col2Title || "Les Softs & Oasis";
+	const col2Title = params?.col2Title || "Les Softs";
 	const col3Title = params?.col3Title || "Les Jus & Eaux";
 
 	const col1Drinks = [
@@ -78,7 +78,7 @@ export default function BirthdayMenuDrinksColumns({
 					style={{
 						borderWidth: isLarge ? 24 : 6,
 						borderStyle: "solid",
-						borderColor: "#D4AF37",
+						borderColor: "#D4B26F",
 						borderRadius: isLarge ? 48 : 16,
 						boxSizing: "border-box",
 					}}
@@ -89,28 +89,28 @@ export default function BirthdayMenuDrinksColumns({
 						style={{
 							borderWidth: isLarge ? 8 : 2,
 							borderStyle: "solid",
-							borderColor: "#D4AF37",
+							borderColor: "#D4B26F",
 							borderRadius: isLarge ? 24 : 8,
 							boxSizing: "border-box",
 						}}
 					>
 						{/* Decorative Corners */}
-						<span className="absolute top-1 2xl:top-4 left-2 2xl:left-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4AF37]">
+						<span className="absolute top-1 2xl:top-4 left-2 2xl:left-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4B26F]">
 							~
 						</span>
-						<span className="absolute top-1 2xl:top-4 right-2 2xl:right-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4AF37]">
+						<span className="absolute top-1 2xl:top-4 right-2 2xl:right-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4B26F]">
 							~
 						</span>
-						<span className="absolute bottom-1 2xl:bottom-4 left-2 2xl:left-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4AF37]">
+						<span className="absolute bottom-1 2xl:bottom-4 left-2 2xl:left-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4B26F]">
 							~
 						</span>
-						<span className="absolute bottom-1 2xl:bottom-4 right-2 2xl:right-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4AF37]">
+						<span className="absolute bottom-1 2xl:bottom-4 right-2 2xl:right-8 text-[10px] 2xl:text-[36px] font-bold text-[#D4B26F]">
 							~
 						</span>
 
 						{/* Header Section */}
 						<div className="flex flex-col items-center w-full mt-0">
-							<h1 className="font-inter text-[30px] lg:text-[45px] 2xl:text-[100px] font-black tracking-widest uppercase text-[#D4AF37] leading-none text-center">
+							<h1 className="font-inter text-[30px] lg:text-[45px] 2xl:text-[100px] font-black tracking-widest uppercase text-[#D4B26F] leading-none text-center">
 								{menuTitle}
 							</h1>
 
@@ -120,9 +120,9 @@ export default function BirthdayMenuDrinksColumns({
 
 							{/* Elegant divider */}
 							<div className="flex items-center justify-center my-1.5 2xl:my-6 w-full max-w-[450px] 2xl:max-w-[1000px]">
-								<div className="flex-1 h-[2px] 2xl:h-[5px] bg-[#D4AF37]"></div>
-								<div className="mx-3 2xl:mx-6 w-2.5 h-2.5 2xl:w-6 2xl:h-6 rounded-full bg-[#D4AF37]"></div>
-								<div className="flex-1 h-[2px] 2xl:h-[5px] bg-[#D4AF37]"></div>
+								<div className="flex-1 h-[2px] 2xl:h-[5px] bg-[#D4B26F]"></div>
+								<div className="mx-3 2xl:mx-6 w-2.5 h-2.5 2xl:w-6 2xl:h-6 rounded-full bg-[#D4B26F]"></div>
+								<div className="flex-1 h-[2px] 2xl:h-[5px] bg-[#D4B26F]"></div>
 							</div>
 						</div>
 
@@ -136,11 +136,11 @@ export default function BirthdayMenuDrinksColumns({
 									style={{
 										borderWidth: isLarge ? 8 : 3,
 										borderStyle: "solid",
-										borderColor: "#D4AF37",
+										borderColor: "#D4B26F",
 										borderRadius: isLarge ? 24 : 12,
 									}}
 								>
-									<div className="bg-[#D4AF37] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-black uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+									<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
 										{col1Title}
 									</div>
 									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-4 2xl:gap-14">
@@ -156,17 +156,17 @@ export default function BirthdayMenuDrinksColumns({
 									</div>
 								</div>
 
-								{/* Card 2: Softs & Oasis */}
+								{/* Card 2: Softs */}
 								<div
 									className="w-[48%] flex flex-col bg-[#131F37] overflow-hidden"
 									style={{
 										borderWidth: isLarge ? 8 : 3,
 										borderStyle: "solid",
-										borderColor: "#D4AF37",
+										borderColor: "#D4B26F",
 										borderRadius: isLarge ? 24 : 12,
 									}}
 								>
-									<div className="bg-[#D4AF37] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-black uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+									<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
 										{col2Title}
 									</div>
 									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-3 2xl:gap-10">
@@ -189,11 +189,11 @@ export default function BirthdayMenuDrinksColumns({
 								style={{
 									borderWidth: isLarge ? 8 : 3,
 									borderStyle: "solid",
-									borderColor: "#D4AF37",
+									borderColor: "#D4B26F",
 									borderRadius: isLarge ? 24 : 12,
 								}}
 							>
-								<div className="bg-[#D4AF37] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-black uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+								<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
 									{col3Title}
 								</div>
 								<div className="flex flex-row flex-wrap items-center justify-center flex-grow p-4 2xl:p-8 px-6 2xl:px-16 gap-x-6 lg:gap-x-8 2xl:gap-x-16 gap-y-3 2xl:gap-y-6">
@@ -203,7 +203,7 @@ export default function BirthdayMenuDrinksColumns({
 												{item}
 											</span>
 											{idx < col3Drinks.length - 1 && (
-												<span className="text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-[#D4AF37] leading-none">
+												<span className="text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-[#D4B26F] leading-none">
 													•
 												</span>
 											)}
