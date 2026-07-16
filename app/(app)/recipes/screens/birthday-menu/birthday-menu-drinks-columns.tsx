@@ -44,8 +44,8 @@ export default function BirthdayMenuDrinksColumns({
 	const col3Title = params?.col3Title || "Les Jus / Eaux";
 
 	const col1Drinks = [
-		params?.drink_c1_1 || "Champagne Maison Lejeune Rosé",
-		params?.drink_c1_2 || "Champagne Maison Lejeune\nBlanc de Blancs",
+		params?.drink_c1_1 || "Champagne Lejeune Rosé",
+		params?.drink_c1_2 || "Champagne Lejeune\nBlanc de Blancs",
 		params?.drink_c1_3 || "Bière Hoegaarden Blanche",
 		params?.drink_c1_4,
 		params?.drink_c1_5,

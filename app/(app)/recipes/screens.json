@@ -752,12 +752,12 @@
 			"drink_c1_1": {
 				"type": "string",
 				"label": "Boisson Col 1 - 1",
-				"default": "Champagne Maison Lejeune Rosé"
+				"default": "Champagne Lejeune Rosé"
 			},
 			"drink_c1_2": {
 				"type": "string",
 				"label": "Boisson Col 1 - 2",
-				"default": "Champagne Maison Lejeune\nBlanc de Blancs"
+				"default": "Champagne Lejeune\nBlanc de Blancs"
 			},
 			"drink_c1_3": {
 				"type": "string",
