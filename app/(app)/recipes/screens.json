@@ -9,7 +9,10 @@
 		"hasDataFetch": false,
 		"props": {},
 		"params": {},
-		"tags": ["bitmap", "text"],
+		"tags": [
+			"bitmap",
+			"text"
+		],
 		"author": {
 			"name": "Mangle Kuo",
 			"github": "ghcpuman902"
@@ -38,7 +41,11 @@
 				"placeholder": "https://example.com/image.png"
 			}
 		},
-		"tags": ["bitmap", "text", "configurable"],
+		"tags": [
+			"bitmap",
+			"text",
+			"configurable"
+		],
 		"author": {
 			"name": "Mangle Kuo",
 			"github": "ghcpuman902"
@@ -57,7 +64,10 @@
 		"hasDataFetch": false,
 		"props": {},
 		"params": {},
-		"tags": ["bitmap", "patterns"],
+		"tags": [
+			"bitmap",
+			"patterns"
+		],
 		"author": {
 			"name": "Mangle Kuo",
 			"github": "ghcpuman902"
@@ -81,7 +91,13 @@
 			"extract": "Loading article..."
 		},
 		"params": {},
-		"tags": ["tailwind", "text", "api", "live-data", "advanced"],
+		"tags": [
+			"tailwind",
+			"text",
+			"api",
+			"live-data",
+			"advanced"
+		],
 		"author": {
 			"name": "Mangle Kuo",
 			"github": "ghcpuman902"
@@ -113,7 +129,12 @@
 				"placeholder": "bitcoin"
 			}
 		},
-		"tags": ["tailwind", "cryptocurrency", "api", "configurable"],
+		"tags": [
+			"tailwind",
+			"cryptocurrency",
+			"api",
+			"configurable"
+		],
 		"author": {
 			"name": "Mangle Kuo",
 			"github": "ghcpuman902"
@@ -143,7 +164,13 @@
 				"default": "San Francisco"
 			}
 		},
-		"tags": ["tailwind", "weather", "api", "live-data", "configurable"],
+		"tags": [
+			"tailwind",
+			"weather",
+			"api",
+			"live-data",
+			"configurable"
+		],
 		"author": {
 			"name": "rbouteiller",
 			"github": ""
@@ -162,7 +189,12 @@
 		"hasDataFetch": false,
 		"props": {},
 		"params": {},
-		"tags": ["bitmap", "responsive", "layout", "example"],
+		"tags": [
+			"bitmap",
+			"responsive",
+			"layout",
+			"example"
+		],
 		"author": {
 			"name": "rbouteiller",
 			"github": ""
@@ -203,7 +235,13 @@
 				"default": "Paris"
 			}
 		},
-		"tags": ["tailwind", "weather", "retro", "live-data", "configurable"],
+		"tags": [
+			"tailwind",
+			"weather",
+			"retro",
+			"live-data",
+			"configurable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -272,7 +310,12 @@
 				"default": ""
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -343,7 +386,12 @@
 				"default": ""
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -448,7 +496,12 @@
 				"default": "Pizzas"
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -519,7 +572,12 @@
 				"default": ""
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -590,7 +648,12 @@
 				"default": ""
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -682,16 +745,11 @@
 			"glace5": {
 				"type": "string",
 				"label": "Glace 5",
-				"default": "Pamplemousse rose"
+				"default": "Citron vert"
 			},
 			"glace6": {
 				"type": "string",
 				"label": "Glace 6",
-				"default": "Citron vert"
-			},
-			"glace7": {
-				"type": "string",
-				"label": "Glace 7",
 				"default": "Orange sanguine"
 			},
 			"glaceSubtitle": {
@@ -700,7 +758,12 @@
 				"default": "(coupelles gaufrette en chocolat)"
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -815,7 +878,12 @@
 				"default": "Eau Gazeuse"
 			}
 		},
-		"tags": ["menu", "birthday", "party", "customizable"],
+		"tags": [
+			"menu",
+			"birthday",
+			"party",
+			"customizable"
+		],
 		"author": {
 			"name": "Antigravity",
 			"github": ""
@@ -838,7 +906,11 @@
 			"slug": ""
 		},
 		"params": {},
-		"tags": ["system", "fallback", "error"],
+		"tags": [
+			"system",
+			"fallback",
+			"error"
+		],
 		"author": {
 			"name": "System",
 			"github": ""
