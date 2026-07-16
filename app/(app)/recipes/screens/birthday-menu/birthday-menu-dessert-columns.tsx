@@ -64,9 +64,8 @@ export default function BirthdayMenuDessertColumns({
 	].filter(Boolean);
 
 	const glacesLine2 = [
-		params?.glace5 || "Pamplemousse rose",
-		params?.glace6 || "Citron vert",
-		params?.glace7 || "Orange sanguine",
+		params?.glace5 || "Citron vert",
+		params?.glace6 || "Orange sanguine",
 	].filter(Boolean);
 
 	return (
