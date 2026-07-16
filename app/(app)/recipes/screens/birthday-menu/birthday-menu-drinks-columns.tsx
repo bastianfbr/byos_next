@@ -55,8 +55,8 @@ export default function BirthdayMenuDrinksColumns({
 		params?.drink_c2_1 || "Pepsi Max",
 		params?.drink_c2_2 || "Oasis Fraise / Framboise",
 		params?.drink_c2_3 || "Oasis Pomme / Poire",
-		params?.drink_c2_4 || "Fuzetea Pêche",
-		params?.drink_c2_5 || "Fuzetea Pêche Hibiscus",
+		params?.drink_c2_4 || "Fuze Tea Pêche",
+		params?.drink_c2_5 || "Fuze Tea Pêche Hibiscus",
 	].filter(Boolean) as string[];
 
 	const col3Drinks = [
@@ -140,14 +140,14 @@ export default function BirthdayMenuDrinksColumns({
 										borderRadius: isLarge ? 24 : 12,
 									}}
 								>
-									<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+									<div className="font-inter bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-9 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[76px] leading-tight">
 										{col1Title}
 									</div>
-									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-4 2xl:gap-14">
+									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-4 2xl:gap-16">
 										{col1Drinks.map((item, idx) => (
 											<span
 												key={idx}
-												className="font-inter text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-center uppercase tracking-wide leading-tight break-words max-w-full text-white"
+												className="font-inter text-[16px] lg:text-[20px] 2xl:text-[68px] font-black text-center uppercase tracking-wide leading-tight break-words max-w-full text-white"
 												style={{ whiteSpace: "pre-line" }}
 											>
 												{item}
@@ -166,14 +166,14 @@ export default function BirthdayMenuDrinksColumns({
 										borderRadius: isLarge ? 24 : 12,
 									}}
 								>
-									<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+									<div className="font-inter bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-9 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[76px] leading-tight">
 										{col2Title}
 									</div>
-									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-3 2xl:gap-10">
+									<div className="flex flex-col items-center justify-center flex-grow p-4 2xl:p-8 gap-3 2xl:gap-12">
 										{col2Drinks.map((item, idx) => (
 											<span
 												key={idx}
-												className="font-inter text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-center uppercase tracking-wide leading-tight break-words max-w-full text-white"
+												className="font-inter text-[16px] lg:text-[20px] 2xl:text-[68px] font-black text-center uppercase tracking-wide leading-tight break-words max-w-full text-white"
 												style={{ whiteSpace: "pre-line" }}
 											>
 												{item}
@@ -193,17 +193,17 @@ export default function BirthdayMenuDrinksColumns({
 									borderRadius: isLarge ? 24 : 12,
 								}}
 							>
-								<div className="bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-7 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[56px] leading-tight">
+								<div className="font-inter bg-[#D4B26F] text-[#0A1128] py-2 2xl:py-9 w-full text-center font-bold uppercase tracking-widest text-[16px] lg:text-[20px] 2xl:text-[76px] leading-tight">
 									{col3Title}
 								</div>
 								<div className="flex flex-row flex-wrap items-center justify-center flex-grow p-4 2xl:p-8 px-6 2xl:px-16 gap-x-6 lg:gap-x-8 2xl:gap-x-16 gap-y-3 2xl:gap-y-6">
 									{col3Drinks.map((item, idx) => (
 										<React.Fragment key={idx}>
-											<span className="font-inter text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-center uppercase tracking-wide leading-none break-words text-white">
+											<span className="font-inter text-[16px] lg:text-[20px] 2xl:text-[68px] font-black text-center uppercase tracking-wide leading-none break-words text-white">
 												{item}
 											</span>
 											{idx < col3Drinks.length - 1 && (
-												<span className="text-[16px] lg:text-[20px] 2xl:text-[54px] font-black text-[#D4B26F] leading-none">
+												<span className="text-[16px] lg:text-[20px] 2xl:text-[68px] font-black text-[#D4B26F] leading-none">
 													•
 												</span>
 											)}
