@@ -114,7 +114,7 @@ export default function BirthdayMenuDrinksColumns({
 								{menuTitle}
 							</h1>
 
-							<div className="font-inter text-[16px] lg:text-[22px] 2xl:text-[40px] tracking-widest text-[#E5D3B3] mt-1.5 2xl:mt-4 uppercase font-semibold">
+							<div className="font-inter text-[16px] lg:text-[22px] 2xl:text-[50px] tracking-widest text-[#E5D3B3] mt-1.5 2xl:mt-4 uppercase font-semibold">
 								Joyeux {age} ans, {sisterName} !
 							</div>
 
