@@ -422,7 +422,11 @@
 				"label": "Feuilleté 3",
 				"default": "Anchois"
 			},
-
+			"feuillete4": {
+				"type": "string",
+				"label": "Feuilleté 4",
+				"default": "Crackers sésame"
+			},
 			"tartelette1": {
 				"type": "string",
 				"label": "Tartelette 1",

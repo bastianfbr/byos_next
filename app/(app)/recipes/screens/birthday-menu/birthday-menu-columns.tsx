@@ -46,6 +46,7 @@ export default function BirthdayMenuColumns({
 		params?.feuillete1 || "Spirales au Pesto",
 		params?.feuillete2 || "Sacristains",
 		params?.feuillete3 || "Anchois",
+		params?.feuillete4 || "Crackers sésame",
 	].filter(Boolean);
 
 	const tartelettes = [
