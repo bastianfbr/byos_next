@@ -400,7 +400,7 @@
 			"verrine4": {
 				"type": "string",
 				"label": "Verrine 4",
-				"default": "Émulsion de crevettes et pétoncles rôties"
+				"default": "Bisque de crevettes et pétoncles rôties"
 			},
 			"verrine5": {
 				"type": "string",

@@ -38,7 +38,7 @@ export default function BirthdayMenuColumns({
 		params?.verrine1 || "Saumon fumé / Tzatziki",
 		params?.verrine2 || "Ktipiti (Poivrons / Féta)",
 		params?.verrine3 || "Mousse de carotte et\nCrème de chou fleur",
-		params?.verrine4 || "Émulsion de crevettes et pétoncles rôties",
+		params?.verrine4 || "Bisque de crevettes et pétoncles rôties",
 		params?.verrine5 || "Crème de betterave et chantilly chèvre",
 	].filter(Boolean);
 
