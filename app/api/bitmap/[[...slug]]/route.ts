@@ -72,6 +72,14 @@ export async function GET(
 					},
 				});
 			}
+
+			return new Response("Failed to generate PNG", {
+				status: 500,
+				headers: {
+					"Content-Type": "text/plain",
+					"Cache-Control": "no-store",
+				},
+			});
 		}
 
 		const recipeBuffer = await renderRecipeBitmap(
