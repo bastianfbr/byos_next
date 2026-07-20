@@ -271,11 +271,11 @@ export default function StarMeteo({
 	// does NOT reach inside it. ALL layout properties MUST be inline `style`.
 	const TEMP_SEG_SIZE = 48; // 7-segment size for forecast card temperatures
 	const TEMP_LABEL_SIZE = 12; // px for "Ht" / "Bs" labels
-const iconH = Math.max(BOT_H - 22 - 12 - TEMP_SEG_SIZE - 16, 48); // available icon height
-const PANEL_BORDER_W = 4;
-const DIVIDER_W = 4;
-const sectionW = Math.floor((W - PANEL_BORDER_W * 2 - DIVIDER_W * 2) / 3);
-const innerPad = 10;
+	const iconH = Math.max(BOT_H - 22 - 12 - TEMP_SEG_SIZE - 16, 48); // available icon height
+	const PANEL_BORDER_W = 4;
+	const DIVIDER_W = 4;
+	const sectionW = Math.floor((W - PANEL_BORDER_W * 2 - DIVIDER_W * 2) / 3);
+	const innerPad = 10;
 
 	const ForecastSection = ({
 		day,
@@ -608,7 +608,9 @@ const innerPad = 10;
 						minT={forecastTomorrowMin}
 					/>
 					{/* Vertical divider */}
-					<div style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }} />
+					<div
+						style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }}
+					/>
 					<ForecastSection
 						day="JOUR 3"
 						iconType={forecastDay3Icon}
@@ -616,7 +618,9 @@ const innerPad = 10;
 						minT={forecastDay3Min}
 					/>
 					{/* Vertical divider */}
-					<div style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }} />
+					<div
+						style={{ width: 4, backgroundColor: "#000000", flexShrink: 0 }}
+					/>
 					<ForecastSection
 						day="JOUR 4"
 						iconType={forecastDay4Icon}

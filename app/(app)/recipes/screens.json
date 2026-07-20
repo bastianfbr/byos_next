@@ -212,6 +212,615 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"birthday-menu": {
+		"title": "Birthday Menu",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "A beautiful customizable birthday menu recipe screen, ideal for displaying on dinner/aperitif tables.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "apero"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-apero": {
+		"title": "Menu Apéritif Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu d'apéritif d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "apero"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-apero-columns": {
+		"title": "Menu Apéritif 2 Colonnes",
+		"published": true,
+		"createdAt": "2026-07-14T12:00:00Z",
+		"updatedAt": "2026-07-14T12:00:00Z",
+		"description": "Recette du menu d'apéritif d'anniversaire présenté sur 2 colonnes avec tartelettes en bas.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Titre affiché en haut du menu",
+				"default": "L'Apéritif"
+			},
+			"verrine1": {
+				"type": "string",
+				"label": "Verrine 1",
+				"default": "Saumon fumé / Tzatziki"
+			},
+			"verrine2": {
+				"type": "string",
+				"label": "Verrine 2",
+				"default": "Ktipiti (Poivrons / Féta)"
+			},
+			"verrine3": {
+				"type": "string",
+				"label": "Verrine 3",
+				"default": "Mousse de carotte et\nCrème de chou fleur"
+			},
+			"verrine4": {
+				"type": "string",
+				"label": "Verrine 4",
+				"default": "Bisque de crevettes et pétoncles rôties"
+			},
+			"verrine5": {
+				"type": "string",
+				"label": "Verrine 5",
+				"default": "Crème de betterave et chantilly chèvre"
+			},
+			"feuillete1": {
+				"type": "string",
+				"label": "Feuilleté 1",
+				"default": "Spirales au Pesto"
+			},
+			"feuillete2": {
+				"type": "string",
+				"label": "Feuilleté 2",
+				"default": "Sacristains"
+			},
+			"feuillete3": {
+				"type": "string",
+				"label": "Feuilleté 3",
+				"default": "Anchois"
+			},
+			"feuillete4": {
+				"type": "string",
+				"label": "Feuilleté 4",
+				"default": "Crackers sésame"
+			},
+			"tartelette1": {
+				"type": "string",
+				"label": "Tartelette 1",
+				"default": "Flambées"
+			},
+			"tartelette2": {
+				"type": "string",
+				"label": "Tartelette 2",
+				"default": "Oignons"
+			},
+			"tartelette3": {
+				"type": "string",
+				"label": "Tartelette 3",
+				"default": "Quiches"
+			},
+			"tartelette4": {
+				"type": "string",
+				"label": "Tartelette 4",
+				"default": "Pizzas"
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-plat": {
+		"title": "Menu Plat Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu plat principal d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "plat"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-dessert": {
+		"title": "Menu Dessert Justine",
+		"published": true,
+		"createdAt": "2026-06-29T12:00:00Z",
+		"updatedAt": "2026-06-29T12:00:00Z",
+		"description": "Recette du menu dessert d'anniversaire pour Justine sur TRMNL.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"mode": {
+				"type": "string",
+				"label": "Mode du Menu",
+				"description": "Sélectionner 'apero', 'plat' ou 'dessert'",
+				"default": "dessert"
+			},
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Laisser vide pour utiliser le titre par défaut du mode",
+				"default": ""
+			},
+			"item1": {
+				"type": "string",
+				"label": "Plat 1 (Optionnel)",
+				"default": ""
+			},
+			"item2": {
+				"type": "string",
+				"label": "Plat 2 (Optionnel)",
+				"default": ""
+			},
+			"item3": {
+				"type": "string",
+				"label": "Plat 3 (Optionnel)",
+				"default": ""
+			},
+			"item4": {
+				"type": "string",
+				"label": "Plat 4 (Optionnel)",
+				"default": ""
+			},
+			"item5": {
+				"type": "string",
+				"label": "Plat 5 (Optionnel)",
+				"default": ""
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-dessert-columns": {
+		"title": "Menu Dessert 2 Colonnes",
+		"published": true,
+		"createdAt": "2026-07-14T14:30:00Z",
+		"updatedAt": "2026-07-14T14:30:00Z",
+		"description": "Recette du menu dessert d'anniversaire présenté sur 2 colonnes (desserts à gauche, glaces à droite).",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Titre affiché en haut du menu",
+				"default": "Les Desserts"
+			},
+			"dessert1": {
+				"type": "string",
+				"label": "Dessert 1",
+				"default": "Féminin fraise-framboise"
+			},
+			"dessert1Desc": {
+				"type": "string",
+				"label": "Dessert 1 Description",
+				"default": "Mousse fromage blanc, panna cotta citron vert, compotée fraise-framboise, biscuit amandes"
+			},
+			"dessert2": {
+				"type": "string",
+				"label": "Dessert 2",
+				"default": "Tarte yuzu"
+			},
+			"dessert2Desc": {
+				"type": "string",
+				"label": "Dessert 2 Description",
+				"default": "Fond sablé, crémeux citron, meringue au yuzu"
+			},
+			"dessert3": {
+				"type": "string",
+				"label": "Dessert 3",
+				"default": "Barista"
+			},
+			"dessert3Desc": {
+				"type": "string",
+				"label": "Dessert 3 Description",
+				"default": "Biscuit noisette, croustillant gianduja, crémeux cappuccino, ganaches café et noisette"
+			},
+			"glace1": {
+				"type": "string",
+				"label": "Glace 1",
+				"default": "Vanille"
+			},
+			"glace2": {
+				"type": "string",
+				"label": "Glace 2",
+				"default": "Chocolat"
+			},
+			"glace3": {
+				"type": "string",
+				"label": "Glace 3",
+				"default": "Café"
+			},
+			"glace4": {
+				"type": "string",
+				"label": "Glace 4",
+				"default": "Praliné"
+			},
+			"glace5": {
+				"type": "string",
+				"label": "Glace 5",
+				"default": "Citron vert"
+			},
+			"glace6": {
+				"type": "string",
+				"label": "Glace 6",
+				"default": "Orange sanguine"
+			},
+			"glaceSubtitle": {
+				"type": "string",
+				"label": "Sous-titre des glaces",
+				"default": "(coupelles gaufrette en chocolat)"
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"birthday-menu-drinks-columns": {
+		"title": "Menu Boissons 3 Colonnes",
+		"published": true,
+		"createdAt": "2026-07-15T12:00:00Z",
+		"updatedAt": "2026-07-15T12:00:00Z",
+		"description": "Recette du menu des boissons d'anniversaire présenté sur 3 colonnes pour grand écran.",
+		"componentPath": "./screens/birthday-menu",
+		"hasDataFetch": false,
+		"props": {},
+		"params": {
+			"sisterName": {
+				"type": "string",
+				"label": "Prénom",
+				"description": "Prénom de la personne fêtée",
+				"default": "Justine"
+			},
+			"age": {
+				"type": "number",
+				"label": "Âge",
+				"description": "Âge célébré",
+				"default": 30
+			},
+			"title": {
+				"type": "string",
+				"label": "Titre du Menu",
+				"description": "Titre affiché en haut du menu",
+				"default": "Les Boissons"
+			},
+			"col1Title": {
+				"type": "string",
+				"label": "Titre Colonne 1",
+				"default": "Les Bulles / Bières"
+			},
+			"col2Title": {
+				"type": "string",
+				"label": "Titre Colonne 2",
+				"default": "Les Softs"
+			},
+			"col3Title": {
+				"type": "string",
+				"label": "Titre Colonne 3",
+				"default": "Les Jus / Eaux"
+			},
+			"drink_c1_1": {
+				"type": "string",
+				"label": "Boisson Col 1 - 1",
+				"default": "Champagne Lejeune Rosé"
+			},
+			"drink_c1_2": {
+				"type": "string",
+				"label": "Boisson Col 1 - 2",
+				"default": "Champagne Lejeune\nBlanc de Blancs"
+			},
+			"drink_c1_3": {
+				"type": "string",
+				"label": "Boisson Col 1 - 3",
+				"default": "Bière Hoegaarden Blanche"
+			},
+			"drink_c2_1": {
+				"type": "string",
+				"label": "Boisson Col 2 - 1",
+				"default": "Pepsi Max"
+			},
+			"drink_c2_2": {
+				"type": "string",
+				"label": "Boisson Col 2 - 2",
+				"default": "Oasis Fraise / Framboise"
+			},
+			"drink_c2_3": {
+				"type": "string",
+				"label": "Boisson Col 2 - 3",
+				"default": "Oasis Pomme / Poire"
+			},
+			"drink_c2_4": {
+				"type": "string",
+				"label": "Boisson Col 2 - 4",
+				"default": "Fuze Tea Pêche"
+			},
+			"drink_c2_5": {
+				"type": "string",
+				"label": "Boisson Col 2 - 5",
+				"default": "Fuze Tea Pêche Hibiscus"
+			},
+			"drink_c3_1": {
+				"type": "string",
+				"label": "Boisson Col 3 - 1",
+				"default": "Jus d’Orange"
+			},
+			"drink_c3_2": {
+				"type": "string",
+				"label": "Boisson Col 3 - 2",
+				"default": "Jus de Pomme"
+			},
+			"drink_c3_3": {
+				"type": "string",
+				"label": "Boisson Col 3 - 3",
+				"default": "Eau Plate"
+			},
+			"drink_c3_4": {
+				"type": "string",
+				"label": "Boisson Col 3 - 4",
+				"default": "Eau Gazeuse"
+			}
+		},
+		"tags": ["menu", "birthday", "party", "customizable"],
+		"author": {
+			"name": "Antigravity",
+			"github": ""
+		},
+		"renderSettings": {
+			"doubleSizeForSharperText": true
+		},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"not-found": {
 		"title": "Not Found Recipe",
 		"published": true,

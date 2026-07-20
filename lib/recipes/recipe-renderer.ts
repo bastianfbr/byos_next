@@ -145,24 +145,34 @@ export const fetchRecipeConfig = cache(
 );
 
 import AlbumComponent from "@/app/(app)/recipes/screens/album/album";
+import BirthdayMenuComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu";
+import BirthdayMenuColumnsComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu-columns";
+import BirthdayMenuDessertColumnsComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu-dessert-columns";
+import BirthdayMenuDrinksColumnsComponent from "@/app/(app)/recipes/screens/birthday-menu/birthday-menu-drinks-columns";
 import BitcoinPriceComponent from "@/app/(app)/recipes/screens/bitcoin-price/bitcoin-price";
+import BitcoinPriceData from "@/app/(app)/recipes/screens/bitcoin-price/getData";
 import BitmapPatternsComponent from "@/app/(app)/recipes/screens/bitmap-patterns/bitmap-patterns";
 import NotFoundScreenComponent from "@/app/(app)/recipes/screens/not-found/not-found";
 import ResponsiveExampleComponent from "@/app/(app)/recipes/screens/responsive-example/responsive-example";
 import SimpleTextComponent from "@/app/(app)/recipes/screens/simple-text/simple-text";
-import StarmeteoComponent from "@/app/(app)/recipes/screens/starmeteo/starmeteo";
-import WeatherComponent from "@/app/(app)/recipes/screens/weather/weather";
-import WikipediaComponent from "@/app/(app)/recipes/screens/wikipedia/wikipedia";
-
-import BitcoinPriceData from "@/app/(app)/recipes/screens/bitcoin-price/getData";
 import StarmeteoData from "@/app/(app)/recipes/screens/starmeteo/getData";
+import StarmeteoComponent from "@/app/(app)/recipes/screens/starmeteo/starmeteo";
 import WeatherData from "@/app/(app)/recipes/screens/weather/getData";
+import WeatherComponent from "@/app/(app)/recipes/screens/weather/weather";
 import WikipediaData from "@/app/(app)/recipes/screens/wikipedia/getData";
+import WikipediaComponent from "@/app/(app)/recipes/screens/wikipedia/wikipedia";
 
 // Static mapping to avoid dynamic import() chunk resolving bugs on Vercel Turbopack
 // biome-ignore lint/suspicious/noExplicitAny: recipe components have varied prop shapes
 const COMPONENT_IMPORTERS: Record<string, any> = {
 	album: AlbumComponent,
+	"birthday-menu": BirthdayMenuComponent,
+	"birthday-menu-apero": BirthdayMenuComponent,
+	"birthday-menu-apero-columns": BirthdayMenuColumnsComponent,
+	"birthday-menu-plat": BirthdayMenuComponent,
+	"birthday-menu-dessert": BirthdayMenuComponent,
+	"birthday-menu-dessert-columns": BirthdayMenuDessertColumnsComponent,
+	"birthday-menu-drinks-columns": BirthdayMenuDrinksColumnsComponent,
 	"bitcoin-price": BitcoinPriceComponent,
 	"bitmap-patterns": BitmapPatternsComponent,
 	"not-found": NotFoundScreenComponent,
